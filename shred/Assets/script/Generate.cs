@@ -5,10 +5,11 @@ using UnityEngine;
 public class Generate : MonoBehaviour
 {
     int P_posY;
-    int distance = 5;
-    float NailTime=0.5f;
-    int left = -6;
-    int right = 6;
+    int distance = 10;
+    float time;
+    float NailTime=0.2f;
+    float left = -7.0f;
+    float right = 7.0f;
 
     [SerializeField, Header("プレイヤー")]
     GameObject Player;
@@ -23,6 +24,9 @@ public class Generate : MonoBehaviour
     [SerializeField, Header("ステージ長さ")]
     int StageLength = 100;
 
+    //インスタンスの回転
+    Quaternion rot = Quaternion.Euler(90, 0, 0);
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +37,7 @@ public class Generate : MonoBehaviour
         StageLength=P_posY+StageLength;
         //釘の座標取得
         Nail_t=Nail.GetComponent<Transform>(); 
-        Nail_t.position=new Vector3(5,Nail_t.position.y,P_t.position.z-distance);
+        Nail_t.position=new Vector3(5,Nail_t.position.y,P_t.position.z);
     
     }
 
@@ -42,22 +46,25 @@ public class Generate : MonoBehaviour
     {
         //プレイヤーのy座標取得
         P_posY = (int)Player.transform.position.y;
-        //Debug.Log(Mathf.Abs(P_posY));
+        time = time + Time.deltaTime;
 
-        while (Mathf.Abs(P_posY) <= Mathf.Abs(StageLength))
+        if (Nail_t.position.y - P_t.position.y >= distance &&
+                NailTime <= time)
+            {
+            //釘のインスタンス
+            Debug.Log(NailTime % 2 == 0);
+
+
+            
+            Instantiate(Nail, new Vector3(Random.Range(left + P_t.position.x, right + P_t.position.x), P_posY - distance, P_t.position.z), rot);
+            
+            Instantiate(Nail, new Vector3(Random.Range(left+P_t.position.x,right + P_t.position.x), P_posY-distance, P_t.position.z),rot);
+
+                 NailTime += 0.5f;
+            }
+        else if (NailTime <= time)
         {
-            //Debug.Log(StageLength);
-            //if (Nail_t.position.y - P_t.position.y >= distance &&
-            //    NailTime <= Time.deltaTime)
-            //{
-
-            //    //Instantiate(Nail);
-
-            //    // NailTime += 0.5f;
-            //}
-
-            ////プレイヤーのy座標取得
-            //P_posY = (int)Player.transform.position.y;
+            NailTime += 0.5f;
         }
     }
 }
