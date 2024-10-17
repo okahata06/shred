@@ -22,9 +22,10 @@ public class camera : MonoBehaviour
     void Update()
     {
         Debug.Log(Camera_rot);
-        c_transform.rotation = Camera_rot;
 
-        c_transform.position = new Vector3(agameobject.transform.position.x, agameobject.transform.position.y + C_posZ, C_posZ);
+        c_transform.position = new Vector3(agameobject.transform.position.x, agameobject.transform.position.y+5, C_posZ);
+
+        c_transform.rotation = Camera_rot;
 
     }
 }
