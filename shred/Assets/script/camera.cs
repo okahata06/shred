@@ -6,11 +6,11 @@ using UnityEngine;
 public class camera : MonoBehaviour
 {
 
-    int C_posZ = -15;
+    int C_posZ = -20;
     public GameObject agameobject;
     Transform c_transform;
 
-    Quaternion Camera_rot=Quaternion.Euler(15,0,0);
+    Quaternion Camera_rot=Quaternion.Euler(25,0,0);
 
     // Start is called before the first frame update
     void Start()
@@ -21,9 +21,8 @@ public class camera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Camera_rot);
 
-        c_transform.position = new Vector3(agameobject.transform.position.x, agameobject.transform.position.y+5, C_posZ);
+        c_transform.position = new Vector3(agameobject.transform.position.x, agameobject.transform.position.y+7, C_posZ);
 
         c_transform.rotation = Camera_rot;
 

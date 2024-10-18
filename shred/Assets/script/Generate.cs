@@ -6,10 +6,13 @@ public class Generate : MonoBehaviour
 {
     int P_posY;
     int distance = 10;
+    int distance_p = 15;
     float time;
-    float NailTime=0.2f;
+    float NailTime=0.5f;
     float left = -7.0f;
     float right = 7.0f;
+
+    bool NailCheck;
 
     [SerializeField, Header("プレイヤー")]
     GameObject Player;
@@ -23,6 +26,8 @@ public class Generate : MonoBehaviour
     GameObject Goal;
     [SerializeField, Header("ステージ長さ")]
     int StageLength = 100;
+
+    GameObject c_nail;
 
     //インスタンスの回転
     Quaternion rot = Quaternion.Euler(90, 0, 0);
@@ -48,23 +53,49 @@ public class Generate : MonoBehaviour
         P_posY = (int)Player.transform.position.y;
         time = time + Time.deltaTime;
 
-        if (Nail_t.position.y - P_t.position.y >= distance &&
-                NailTime <= time)
+
+        //釘との距離と時間で判定
+        if (Nail_t.position.y - P_t.position.y <= distance &&
+                NailTime <= time&&P_posY>= (int)Player.transform.position.y)
             {
             //釘のインスタンス
-            Debug.Log(NailTime % 2 == 0);
-
+            NailGenerate();
 
             
-            Instantiate(Nail, new Vector3(Random.Range(left + P_t.position.x, right + P_t.position.x), P_posY - distance, P_t.position.z), rot);
-            
-            Instantiate(Nail, new Vector3(Random.Range(left+P_t.position.x,right + P_t.position.x), P_posY-distance, P_t.position.z),rot);
-
-                 NailTime += 0.5f;
+            NailTime += 0.15f;
             }
+        //通り過ぎた釘を破壊
+        else if(Nail_t.position.y > P_t.position.y+10)
+            {
+            if (Nail != null&& !NailCheck)
+            {
+                NailCheck = true; 
+                Destroy(Nail);//初回以降エラー
+            }
+            if (c_nail != null) Destroy(c_nail);
+        }
         else if (NailTime <= time)
         {
-            NailTime += 0.5f;
+            NailTime += 0.15f;
         }
+
+
+        c_nail = GameObject.FindGameObjectWithTag("Nail");
+
+        Nail_t.position = new Vector3(5, c_nail.transform.position.y, P_t.position.z);
+
+
+    }
+
+
+    void NailGenerate()
+    {
+        //釘のインスタンス
+        GameObject nail = Instantiate(Nail, new Vector3(Random.Range(left + P_t.position.x, right + P_t.position.x), P_posY - distance_p, P_t.position.z), rot) as GameObject;
+        //クローンの名前を変更
+        nail.name = "Nail";
+
+        
+
     }
 }
