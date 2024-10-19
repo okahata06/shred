@@ -5,10 +5,12 @@ using UnityEngine;
 public class Generate : MonoBehaviour
 {
     int P_posY;
+    int P_posYbf;
     int distance = 10;
     int distance_p = 15;
     float time;
-    float NailTime=0.5f;
+    float bfTime=0;
+    float NailTime = 0.5f;
     float left = -7.0f;
     float right = 7.0f;
 
@@ -36,14 +38,16 @@ public class Generate : MonoBehaviour
     void Start()
     {
         //プレイヤーの座標取得
-        P_t=Player.GetComponent<Transform>();
+        P_t = Player.GetComponent<Transform>();
         P_posY = (int)P_t.position.y;
+        P_posYbf = P_posY;
+
         //プレイヤーのいる地点からステージの終了地点を決める
-        StageLength=P_posY+StageLength;
+        StageLength = P_posY + StageLength;
         //釘の座標取得
-        Nail_t=Nail.GetComponent<Transform>(); 
-        Nail_t.position=new Vector3(5,Nail_t.position.y,P_t.position.z);
-    
+        Nail_t = Nail.GetComponent<Transform>();
+        Nail_t.position = new Vector3(5, Nail_t.position.y, P_t.position.z);
+
     }
 
     // Update is called once per frame
@@ -56,20 +60,21 @@ public class Generate : MonoBehaviour
 
         //釘との距離と時間で判定
         if (Nail_t.position.y - P_t.position.y <= distance &&
-                NailTime <= time&&P_posY>= (int)Player.transform.position.y)
-            {
+                NailTime <= time &&
+                P_posYbf > P_posY)//落下していないときは生成しないため
+        {
             //釘のインスタンス
             NailGenerate();
 
-            
+
             NailTime += 0.15f;
-            }
+        }
         //通り過ぎた釘を破壊
-        else if(Nail_t.position.y > P_t.position.y+10)
+        else if (Nail_t.position.y > P_t.position.y + 10)
+        {
+            if (Nail != null && !NailCheck)
             {
-            if (Nail != null&& !NailCheck)
-            {
-                NailCheck = true; 
+                NailCheck = true;
                 Destroy(Nail);//初回以降エラー
             }
             if (c_nail != null) Destroy(c_nail);
@@ -84,6 +89,11 @@ public class Generate : MonoBehaviour
 
         Nail_t.position = new Vector3(5, c_nail.transform.position.y, P_t.position.z);
 
+        if(time>=bfTime)
+        {
+            P_posYbf = P_posY;
+            bfTime += 0.5f;
+        }
 
     }
 
@@ -95,7 +105,7 @@ public class Generate : MonoBehaviour
         //クローンの名前を変更
         nail.name = "Nail";
 
-        
+
 
     }
 }
