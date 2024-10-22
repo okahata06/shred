@@ -6,13 +6,14 @@ public class Generate : MonoBehaviour
 {
     int P_posY;
     int P_posYbf;
-    int distance = 10;
-    int distance_p = 15;
-    float time;
-    float bfTime=0;
-    float NailTime = 0.5f;
+    int distance = 15;//Playerとインスタンスする釘の距離
+  
+    float time;//経過時間
+    float bfTime = 0;//player座標チェック用
+    float NailTime = 0.5f;//釘召喚用
 
     bool NailCheck;
+    bool Nail_LR = false;//釘の召喚をばらけさせるため。右がfalse
 
     [SerializeField, Header("プレイヤー")]
     GameObject Player;
@@ -20,6 +21,7 @@ public class Generate : MonoBehaviour
     [SerializeField, Header("釘")]
     GameObject Nail;
     Transform Nail_t;
+  
     [SerializeField, Header("NGエリア")]
     GameObject NG;
     [SerializeField, Header("ゴール")]
@@ -27,18 +29,20 @@ public class Generate : MonoBehaviour
     [SerializeField, Header("ステージ壁")]
     GameObject Wall;
     Transform Wall_T;
+  
     [SerializeField, Header("ステージ長さ")]
     int StageLength = 100;
     [SerializeField, Header("ステージ壁X座標")]
-    float left=-5;
+    float left = -5;
     [SerializeField]
     float right = 5;
+    float senter = 0;
     float depth = -2;
 
     GameObject c_nail;
 
     //インスタンス用無回転
-    Quaternion Nrot=Quaternion.identity;
+    Quaternion Nrot = Quaternion.identity;
 
     //釘インスタンスの回転
     Quaternion Nailrot = Quaternion.Euler(90, 0, 0);
@@ -56,13 +60,14 @@ public class Generate : MonoBehaviour
         Nail_t.position = new Vector3(5, Nail_t.position.y, P_t.position.z);
 
         //Wallの座標取得
-        Wall_T=Wall.GetComponent<Transform>();
-        Wall_T.localScale=new Vector3(1,StageLength,2);
+        Wall_T = Wall.GetComponent<Transform>();
+        Wall_T.localScale = new Vector3(1, StageLength, 2);
         WallGenerate();
         //プレイヤーのいる地点からステージの終了地点を決める
         StageLength = P_posY + StageLength;
-        
 
+        //インスタンス用。中心X座標
+        senter = (left + right) / 2;
     }
 
     // Update is called once per frame
@@ -76,7 +81,7 @@ public class Generate : MonoBehaviour
         //釘との距離と時間で判定
         if (Nail_t.position.y - P_t.position.y <= distance &&
                 NailTime <= time &&
-                P_posYbf > P_posY)//落下していないときは生成しないため
+                P_posYbf > P_posY)//落下していないときは生成しない
         {
             //釘のインスタンス
             NailGenerate();
@@ -87,10 +92,11 @@ public class Generate : MonoBehaviour
         //通り過ぎた釘を破壊
         else if (Nail_t.position.y > P_t.position.y + 10)
         {
+            //初期設置釘の存在確認
             if (Nail != null && !NailCheck)
             {
                 NailCheck = true;
-                Destroy(Nail);//初回以降エラー
+                Destroy(Nail);//エラー表示
             }
             if (c_nail != null) Destroy(c_nail);
         }
@@ -99,12 +105,12 @@ public class Generate : MonoBehaviour
             NailTime += 0.15f;
         }
 
-
+        //タグで釘を検索（おそらく最も古いもの）
         c_nail = GameObject.FindGameObjectWithTag("Nail");
-
+        //釘の座標を保存(Yがほしい)
         Nail_t.position = new Vector3(5, c_nail.transform.position.y, P_t.position.z);
 
-        if(time>=bfTime)
+        if (time >= bfTime)
         {
             P_posYbf = P_posY;
             bfTime += 0.5f;
@@ -116,12 +122,23 @@ public class Generate : MonoBehaviour
     void NailGenerate()
     {
         //釘のインスタンス
-        GameObject nail = Instantiate(Nail, new Vector3(Random.Range(left + P_t.position.x, right + P_t.position.x), P_posY - distance_p, P_t.position.z), Nailrot) as GameObject;
-        //クローンの名前を変更
-        nail.name = "Nail";
+        if (Nail_LR)
+        {
+            GameObject nailL = Instantiate(Nail, new Vector3(Random.Range(left, senter), P_posY - distance, P_t.position.z), Nailrot) as GameObject;
+            //クローンの名前を変更
+            nailL.name = "NailLeft";
 
+            Nail_LR = false;
+        }
+        else
+        {
+            GameObject nailR = Instantiate(Nail, new Vector3(Random.Range(senter, right), P_posY - distance, P_t.position.z), Nailrot) as GameObject;
+            //クローンの名前を変更
+            nailR.name = "NailRight";
+            Nail_LR = true;
+
+        }
     }
-
     //壁のインスタンス
     void WallGenerate()
     {
@@ -130,5 +147,6 @@ public class Generate : MonoBehaviour
         Instantiate(Wall, new Vector3(right, -StageLength / 2, 0), Nrot);
 
     }
+
 
 }
