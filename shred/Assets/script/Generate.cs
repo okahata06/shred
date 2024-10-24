@@ -6,7 +6,7 @@ public class Generate : MonoBehaviour
 {
     int P_posY;
     int P_posYbf;
-    int distance = 15;//Playerとインスタンスする釘の距離
+    int distance = 25;//Playerとインスタンスする釘の距離
   
     float time;//経過時間
     float bfTime = 0;//player座標チェック用
@@ -78,15 +78,14 @@ public class Generate : MonoBehaviour
         time = time + Time.deltaTime;
 
 
-        //釘との距離と時間で判定
-        if (Nail_t.position.y - P_t.position.y <= distance &&
-                NailTime <= time &&
+        //釘のインスタンス
+        if (Nail_t.position.y - P_t.position.y <= distance &&//釘との距離で判定
+            P_t.position.y>=-(StageLength-distance)&&
+                NailTime <= time &&//一定間隔のインターバル
                 P_posYbf > P_posY)//落下していないときは生成しない
         {
             //釘のインスタンス
             NailGenerate();
-
-
             NailTime += 0.15f;
         }
         //通り過ぎた釘を破壊
@@ -99,6 +98,7 @@ public class Generate : MonoBehaviour
                 Destroy(Nail);//エラー表示
             }
             if (c_nail != null) Destroy(c_nail);
+
         }
         else if (NailTime <= time)
         {
