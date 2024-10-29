@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GoalScene.unity
     guid: 1c54d5c385854ba47bf350124f1e924b
+  - enabled: 1
+    path: Assets/Scenes/NGScene.unity
+    guid: b5a6a789fc1a9fc46af188e822d4d71c
   m_configObjects: {}

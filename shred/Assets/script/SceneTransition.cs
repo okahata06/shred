@@ -23,12 +23,25 @@ public class SceneTransition : MonoBehaviour
         {
             Invoke("ChangeScene", 1.5f);
         }
+        if (gameObject.tag == "NG")
+        {
+            Invoke("ChangeScene", 1.5f);
+        }
 
     }
 
     void ChangeScene()
     {
-        SceneManager.LoadScene("GoalScene");
+        if (gameObject.tag == "Goal")
+        {
+            SceneManager.LoadScene("GoalScene");
+
+        }
+        if (gameObject.tag == "NG")
+        {
+            SceneManager.LoadScene("NGScene");
+
+        }
 
     }
 

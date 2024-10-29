@@ -7,13 +7,17 @@ public class Generate : MonoBehaviour
     int P_posY;
     int P_posYbf;
     int distance = 25;//Playerとインスタンスする釘の距離
-  
+    int Goal_posX = 0;
+
+
+
     float time;//経過時間
     float bfTime = 0;//player座標チェック用
     float NailTime = 0.5f;//釘召喚用
 
     bool NailCheck;
     bool Nail_LR = false;//釘の召喚をばらけさせるため。右がfalse
+    bool Goal_Gen = false;
 
     [SerializeField, Header("プレイヤー")]
     GameObject Player;
@@ -105,6 +109,16 @@ public class Generate : MonoBehaviour
             NailTime += 0.15f;
         }
 
+        //ゴールの生成
+        if(P_t.position.y <= -(StageLength - distance))
+        {
+            Debug.Log("aa");
+            GoalAreaGenerate();
+            Goal_Gen=true;
+        }
+
+
+
         //タグで釘を検索（おそらく最も古いもの）
         c_nail = GameObject.FindGameObjectWithTag("Nail");
         //釘の座標を保存(Yがほしい)
@@ -139,6 +153,20 @@ public class Generate : MonoBehaviour
 
         }
     }
+    
+    //NGエリアのインスタンス
+    void NGAreaGenerate()
+    {
+        Instantiate(NG, new Vector3(left, -StageLength / 2, 0), Nailrot);
+    }
+
+    //GOALエリアのインスタンス
+    void GoalAreaGenerate()
+    {
+        Instantiate(Goal, new Vector3(left, -StageLength / 2, 0), Nailrot);
+    }
+    
+    
     //壁のインスタンス
     void WallGenerate()
     {
