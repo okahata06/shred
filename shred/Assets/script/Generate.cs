@@ -163,7 +163,7 @@ public class Generate : MonoBehaviour
     //GOALエリアのインスタンス
     void GoalAreaGenerate()
     {
-        Instantiate(Goal, new Vector3(left, -StageLength / 2, 0), Nailrot);
+        Instantiate(Goal, new Vector3((left+right)/2, -StageLength / 2, 0), Nailrot);
     }
     
     
