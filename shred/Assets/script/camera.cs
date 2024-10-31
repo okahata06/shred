@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class camera : MonoBehaviour
 {
+    [SerializeField,Header("zç¿ïW")]
+    int C_posZ = -10;
+    [SerializeField,Header("í«ê’ëŒè€")]
+    public GameObject target;
 
-    int C_posZ = -20;
-    public GameObject agameobject;
     Transform c_transform;
 
     Quaternion Camera_rot=Quaternion.Euler(25,0,0);
@@ -22,7 +24,7 @@ public class camera : MonoBehaviour
     void Update()
     {
 
-        c_transform.position = new Vector3(agameobject.transform.position.x, agameobject.transform.position.y+7, C_posZ);
+        c_transform.position = new Vector3(target.transform.position.x, target.transform.position.y+3, C_posZ);
 
         c_transform.rotation = Camera_rot;
 

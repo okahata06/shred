@@ -30,10 +30,13 @@ public class Generate : MonoBehaviour
     GameObject NG;
     [SerializeField, Header("ゴール")]
     GameObject Goal;
-    [SerializeField, Header("ステージ壁")]
-    GameObject Wall;
-    Transform Wall_T;
-  
+    [SerializeField, Header("ステージ横壁")]
+    GameObject Wall_LR;
+    Transform Wall_LR_T;
+    [SerializeField, Header("ステージ前後壁")]
+    GameObject Wall_BA;
+    Transform Wall_BA_T;
+
     [SerializeField, Header("ステージ長さ")]
     int StageLength = 100;
     [SerializeField, Header("ステージ壁X座標")]
@@ -64,9 +67,13 @@ public class Generate : MonoBehaviour
         Nail_t.position = new Vector3(5, Nail_t.position.y, P_t.position.z);
 
         //Wallの座標取得
-        Wall_T = Wall.GetComponent<Transform>();
-        Wall_T.localScale = new Vector3(1, StageLength, 2);
+        Wall_LR_T = Wall_LR.GetComponent<Transform>();
+        Wall_LR_T.localScale = new Vector3(1, StageLength, 2);
+        
+        Wall_BA_T=Wall_BA.GetComponent<Transform>();
+        Wall_BA_T.localScale = new Vector3((left + right), StageLength);
         WallGenerate();
+
         //プレイヤーのいる地点からステージの終了地点を決める
         StageLength = P_posY + StageLength;
 
@@ -171,9 +178,11 @@ public class Generate : MonoBehaviour
     void WallGenerate()
     {
         //壁のインスタンス
-        Instantiate(Wall, new Vector3(left, -StageLength / 2, 0), Nrot);
-        Instantiate(Wall, new Vector3(right, -StageLength / 2, 0), Nrot);
+        Instantiate(Wall_LR, new Vector3(left, -StageLength / 2, 0), Nrot);
+        Instantiate(Wall_LR, new Vector3(right, -StageLength / 2, 0), Nrot);
 
+
+        Instantiate(Wall_BA, new Vector3((left + right) / 2, -StageLength / 2, 0), Nrot);
     }
 
 
