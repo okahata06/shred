@@ -71,7 +71,7 @@ public class Generate : MonoBehaviour
         Wall_LR_T.localScale = new Vector3(1, StageLength, 2);
         
         Wall_BA_T=Wall_BA.GetComponent<Transform>();
-        Wall_BA_T.localScale = new Vector3((left + right), StageLength);
+        Wall_BA_T.localScale = new Vector3(Mathf.Abs(left) + Mathf.Abs(right), StageLength);
         WallGenerate();
 
         //プレイヤーのいる地点からステージの終了地点を決める
@@ -182,7 +182,8 @@ public class Generate : MonoBehaviour
         Instantiate(Wall_LR, new Vector3(right, -StageLength / 2, 0), Nrot);
 
 
-        Instantiate(Wall_BA, new Vector3((left + right) / 2, -StageLength / 2, 0), Nrot);
+        Instantiate(Wall_BA, new Vector3((left + right) / 2, -StageLength / 2, -1.5f), Nrot);
+        Instantiate(Wall_BA, new Vector3((left + right) / 2, -StageLength / 2, 1.5f), Nrot);
     }
 
 
