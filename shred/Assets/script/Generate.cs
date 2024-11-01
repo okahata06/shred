@@ -64,14 +64,14 @@ public class Generate : MonoBehaviour
 
         //釘の座標取得
         Nail_t = Nail.GetComponent<Transform>();
-        Nail_t.position = new Vector3(5, Nail_t.position.y, P_t.position.z);
+        Nail_t.position = new Vector3(5, Nail_t.position.y);
 
         //Wallの座標取得
         Wall_LR_T = Wall_LR.GetComponent<Transform>();
-        Wall_LR_T.localScale = new Vector3(1, StageLength, 2);
+        Wall_LR_T.localScale = new Vector3(1, StageLength, 2.5f);
         
         Wall_BA_T=Wall_BA.GetComponent<Transform>();
-        Wall_BA_T.localScale = new Vector3(Mathf.Abs(left) + Mathf.Abs(right), StageLength);
+        Wall_BA_T.localScale = new Vector3(Mathf.Abs(left) + Mathf.Abs(right), StageLength,0.2f);
         WallGenerate();
 
         //プレイヤーのいる地点からステージの終了地点を決める
@@ -129,7 +129,7 @@ public class Generate : MonoBehaviour
         //タグで釘を検索（おそらく最も古いもの）
         c_nail = GameObject.FindGameObjectWithTag("Nail");
         //釘の座標を保存(Yがほしい)
-        Nail_t.position = new Vector3(5, c_nail.transform.position.y, P_t.position.z);
+        Nail_t.position = new Vector3(5, c_nail.transform.position.y);
 
         if (time >= bfTime)
         {
@@ -145,7 +145,7 @@ public class Generate : MonoBehaviour
         //釘のインスタンス
         if (Nail_LR)
         {
-            GameObject nailL = Instantiate(Nail, new Vector3(Random.Range(left, senter), P_posY - distance, P_t.position.z), Nailrot) as GameObject;
+            GameObject nailL = Instantiate(Nail, new Vector3(Random.Range(left, senter), P_posY - distance), Nailrot) as GameObject;
             //クローンの名前を変更
             nailL.name = "NailLeft";
 
@@ -153,7 +153,7 @@ public class Generate : MonoBehaviour
         }
         else
         {
-            GameObject nailR = Instantiate(Nail, new Vector3(Random.Range(senter, right), P_posY - distance, P_t.position.z), Nailrot) as GameObject;
+            GameObject nailR = Instantiate(Nail, new Vector3(Random.Range(senter, right), P_posY - distance), Nailrot) as GameObject;
             //クローンの名前を変更
             nailR.name = "NailRight";
             Nail_LR = true;
