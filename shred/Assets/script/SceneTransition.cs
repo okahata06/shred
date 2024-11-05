@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransition : MonoBehaviour
 {
+
+    int NG_EntryCount=0;
+    int Goal_EntryCount=0;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,18 +19,37 @@ public class SceneTransition : MonoBehaviour
     {
     }
 
-    private void OnTriggerEnter(Collider oth)
+    private void OnTriggerStay(Collider oth)
     {
         if (oth.tag != "Player") { return ; }
         if (gameObject.tag == "Goal")
         {
-            Invoke("ChangeScene", 1.5f);
+            Goal_EntryCount++;
+            if(Goal_EntryCount>=60)
+            {
+                Invoke("ChangeScene", 1.5f);
+
+            }
+
         }
-        if (gameObject.tag == "NG")
+        else
         {
-            Invoke("ChangeScene", 1.5f);
+            Goal_EntryCount = 0;
         }
 
+        if (gameObject.tag == "NG")
+        {
+            NG_EntryCount++;
+            if (NG_EntryCount >= 60)
+            {
+                Invoke("ChangeScene", 1.5f);
+
+            }
+        }
+        else
+        {
+            NG_EntryCount = 0;
+        }
     }
 
     void ChangeScene()

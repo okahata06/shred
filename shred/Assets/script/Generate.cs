@@ -9,7 +9,7 @@ public class Generate : MonoBehaviour
     int P_posYbf;
     int distance = 25;//Playerとインスタンスする釘の距離
     int Goal_posX = 0;
-
+    int Enemy_pos;
 
 
     float time;//経過時間
@@ -23,6 +23,8 @@ public class Generate : MonoBehaviour
     [SerializeField, Header("プレイヤー")]
     GameObject Player;
     Transform P_t;
+    [SerializeField, Header("エネミー")]
+    GameObject Enemy;
     [SerializeField, Header("釘")]
     GameObject Nail;
     Transform Nail_t;
@@ -96,7 +98,7 @@ public class Generate : MonoBehaviour
                 NailTime <= time &&//一定間隔のインターバル
                 P_posYbf > P_posY)//落下していないときは生成しない
         {
-          if(Random.Range(0,10)==0) 
+          if(Random.Range(0,20)==0) 
             {
 
                 NGAreaGenerate();            
@@ -168,6 +170,20 @@ public class Generate : MonoBehaviour
         }
     }
     
+    //敵のインスタンス
+    void EnemyGenerate()
+    { int side;
+        side = Random.Range(0, 1);
+        if(side==0)
+        {
+            Instantiate(Enemy, new Vector3(left, P_posY - distance, 0), Nailrot);
+        }
+        if(side==1)
+        {
+            Instantiate(Enemy, new Vector3(right, P_posY - distance, 0), Nailrot);
+        }
+    }
+
     //NGエリアのインスタンス
     void NGAreaGenerate()
     {

@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class camera : MonoBehaviour
 {
-    [SerializeField,Header("zÀ•W")]
-    int C_posZ = -10;
+    [SerializeField,Header("’ÊízÀ•W")]
+    int C_posZ = -20;
     [SerializeField,Header("’ÇÕ‘ÎÛ")]
     public GameObject target;
 
