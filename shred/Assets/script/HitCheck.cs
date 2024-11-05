@@ -30,12 +30,9 @@ public class HitCheck : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        if (col.) { return; }
-        if(col.CompareTag("Nail"))
-        {
-            NailHit++;
-        }
+        NailHit++;
         Debug.Log(NailHit);
-
+        if (NailHit == 20)
+            this.gameObject.transform.localScale =new Vector3(3,3,3);
     }
 }

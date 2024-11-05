@@ -28,7 +28,7 @@ public class wind : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(velocity);
+      //  Debug.Log(velocity);
         gameObject.transform.position = P_t.position;
     }
     void OnTriggerStay(Collider col)
