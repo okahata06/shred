@@ -440,9 +440,10 @@ GameObject:
   - component: {fileID: 3374228917535584563}
   - component: {fileID: 5333669381795290972}
   - component: {fileID: 68586834409030872}
+  - component: {fileID: 6318235915695280422}
   m_Layer: 0
   m_Name: GoalArea
-  m_TagString: Nail
+  m_TagString: Goal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -457,7 +458,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 1.18, y: -2.08, z: 0}
-  m_LocalScale: {x: 1.18, y: 1.2348835, z: 0.89186037}
+  m_LocalScale: {x: 4.23, y: 4.4267435, z: 3.1970928}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5270304348728992473}
@@ -540,6 +541,18 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &6318235915695280422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3518551096124332402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f55386fe854d1b6449b4a30b5f1e9e25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4193181180137605074
 GameObject:
   m_ObjectHideFlags: 0

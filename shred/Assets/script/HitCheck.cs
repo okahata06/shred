@@ -30,9 +30,80 @@ public class HitCheck : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        NailHit++;
-        Debug.Log(NailHit);
-        if (NailHit == 20)
-            this.gameObject.transform.localScale =new Vector3(3,3,3);
+
+        //一定以上当たったらサイズを消して破壊する
+        if(col.gameObject.tag==("Nail"))
+        {
+            NailHit++;
+            Debug.Log(NailHit);
+
+            if (gameObject.name == ("LeftLeg"))//左太もも
+            {
+                if (NailHit == 30)
+                    transform.localScale = Vector3.zero;
+            }
+            if (gameObject.name == ("LeftCalf"))//左ふくらはぎ
+            {
+                if (NailHit == 15)
+                    transform.localScale = Vector3.zero;
+            }
+            if (gameObject.name == ("LeftFoot"))//左足先
+            {
+                if (NailHit == 5)
+                    transform.localScale = Vector3.zero;
+            }
+            if (gameObject.name == ("RightLeg"))//右太もも
+            {
+                if (NailHit == 30)
+                    transform.localScale = Vector3.zero;
+            }
+            if (gameObject.name == ("RightCalf"))//右ふくらはぎ
+            {
+                if (NailHit == 15)
+                    transform.localScale = Vector3.zero;
+            }
+            if (gameObject.name == ("RightFoot"))//右足先
+            {
+                if (NailHit == 5)
+                    transform.localScale = Vector3.zero;
+            }
+            if (gameObject.name == ("LeftUpperArm"))//左上腕
+            {
+                if (NailHit == 30)
+                    transform.localScale = Vector3.zero;
+            }
+            if (gameObject.name == ("LeftArm"))//左腕
+            {
+                if (NailHit == 15)
+                    transform.localScale = Vector3.zero;
+            }
+            if (gameObject.name == ("LeftHand"))//左手
+            {
+                if (NailHit == 5)
+                    transform.localScale = Vector3.zero;
+            }
+            if (gameObject.name == ("RightUpperArm"))//右上腕
+            {
+                if (NailHit == 30)
+                    transform.localScale = Vector3.zero;
+            }
+            if (gameObject.name == ("RightArm"))//右腕
+            {
+                if (NailHit == 5)
+                    transform.localScale = Vector3.zero;
+            }
+            if (gameObject.name == ("RightHand"))//右手
+            {
+                if (NailHit == 5)
+                    transform.localScale = Vector3.zero;
+            }
+            if (gameObject.name == ("Head"))//頭部
+            {
+                if (NailHit == 20)
+                    transform.localScale = Vector3.zero;
+            }
+
+
+        }
     }
 }

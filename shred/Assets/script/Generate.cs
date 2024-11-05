@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.Switch;
 
 public class Generate : MonoBehaviour
 {
@@ -95,6 +96,12 @@ public class Generate : MonoBehaviour
                 NailTime <= time &&//一定間隔のインターバル
                 P_posYbf > P_posY)//落下していないときは生成しない
         {
+          if(Random.Range(0,10)==0) 
+            {
+
+                NGAreaGenerate();            
+            
+            }
             //釘のインスタンス
             NailGenerate();
             NailTime += 0.15f;
@@ -117,7 +124,7 @@ public class Generate : MonoBehaviour
         }
 
         //ゴールの生成
-        if(P_t.position.y <= -(StageLength - distance))
+        if(P_t.position.y <= -(StageLength - distance)&&!Goal_Gen)
         {
             Debug.Log("aa");
             GoalAreaGenerate();
@@ -164,13 +171,13 @@ public class Generate : MonoBehaviour
     //NGエリアのインスタンス
     void NGAreaGenerate()
     {
-        Instantiate(NG, new Vector3(left, -StageLength / 2, 0), Nailrot);
+        Instantiate(NG, new Vector3(Random.Range(senter, right), P_posY-distance, 0), Nailrot);
     }
 
     //GOALエリアのインスタンス
     void GoalAreaGenerate()
     {
-        Instantiate(Goal, new Vector3((left+right)/2, -StageLength / 2, 0), Nailrot);
+        Instantiate(Goal, new Vector3((left+right)/2, -StageLength, 0), Nailrot);
     }
     
     
