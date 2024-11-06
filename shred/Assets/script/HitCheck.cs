@@ -35,7 +35,6 @@ public class HitCheck : MonoBehaviour
         if(col.gameObject.tag==("Nail"))
         {
             NailHit++;
-            Debug.Log(NailHit);
 
             if (gameObject.name == ("LeftLeg"))//ç∂ëæÇ‡Ç‡
             {

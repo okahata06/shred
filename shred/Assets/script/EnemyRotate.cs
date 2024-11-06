@@ -12,16 +12,18 @@ public class EnemyRotate : MonoBehaviour
 
     void Start()
     {
+        _target = GameObject.Find("Hips");
         float angle = GetAngle(sentral.transform.position, _target.transform.position);
-        Debug.Log(angle);
     }
 
 
     private void Update()
     {
+        //Šp“xŽæ“¾
         float angle = GetAngle(sentral.transform.position, _target.transform.position);
 
-        transform.rotation= Quaternion.Euler(0,0, angle);
+        //”½‰f
+        transform.rotation = Quaternion.Euler(0, 0, angle);
 
     }
     float GetAngle(Vector2 start, Vector2 target)
@@ -32,4 +34,6 @@ public class EnemyRotate : MonoBehaviour
 
         return degree;
     }
+
+
 }

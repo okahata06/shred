@@ -8,13 +8,13 @@ public class Generate : MonoBehaviour
     int P_posY;
     int P_posYbf;
     int distance = 25;//Playerとインスタンスする釘の距離
-    int Goal_posX = 0;
     int Enemy_pos;
 
 
     float time;//経過時間
     float bfTime = 0;//player座標チェック用
     float NailTime = 0.5f;//釘召喚用
+    float Goal_posX = 0;
 
     bool NailCheck;
     bool Nail_LR = false;//釘の召喚をばらけさせるため。右がfalse
@@ -34,8 +34,8 @@ public class Generate : MonoBehaviour
     [SerializeField, Header("ゴール")]
     GameObject Goal;
     [SerializeField, Header("ステージ横壁")]
-    GameObject Wall_LR;
-    Transform Wall_LR_T;
+    GameObject Wall_LRDS;
+    Transform Wall_LRDS_T;
     [SerializeField, Header("ステージ前後壁")]
     GameObject Wall_BA;
     Transform Wall_BA_T;
@@ -50,8 +50,6 @@ public class Generate : MonoBehaviour
     float senter = 0;
     float depth = -2;
 
-
-    GameObject P_hip;
     GameObject c_nail;
 
     //インスタンス用無回転
@@ -63,37 +61,39 @@ public class Generate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         //プレイヤーの座標取得
         P_t = Player.GetComponent<Transform>();
         P_posY = (int)P_t.position.y;
         P_posYbf = P_posY;
-
-        //釘の座標取得
-        Nail_t = Nail.GetComponent<Transform>();
-        Nail_t.position = new Vector3(5, Nail_t.position.y);
-
-        //Wallの座標取得
-        Wall_LR_T = Wall_LR.GetComponent<Transform>();
-        Wall_LR_T.localScale = new Vector3(1, StageLength, 2.5f);
-        
-        Wall_BA_T=Wall_BA.GetComponent<Transform>();
-        Wall_BA_T.localScale = new Vector3(Mathf.Abs(left) + Mathf.Abs(right), StageLength,0.2f);
-        WallGenerate();
 
         //プレイヤーのいる地点からステージの終了地点を決める
         StageLength = P_posY + StageLength;
 
         //インスタンス用。中心X座標
         senter = (left + right) / 2;
+
+        //釘の座標取得
+        Nail_t = Nail.GetComponent<Transform>();
+        Nail_t.position = new Vector3(5, Nail_t.position.y);
+
+        //Wallの座標取得
+        Wall_LRDS_T = Wall_LRDS.GetComponent<Transform>();
+        Wall_LRDS_T.localScale = new Vector3(1, StageLength, 2.5f);
+        
+        Wall_BA_T=Wall_BA.GetComponent<Transform>();
+        Wall_BA_T.localScale = new Vector3(Mathf.Abs(left) + Mathf.Abs(right), StageLength,0.2f);
+        WallGenerate();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
         //プレイヤーのy座標取得
         P_posY = (int)Player.transform.position.y;
         time = time + Time.deltaTime;
-
         //インスタンス条件
         if (Nail_t.position.y - P_t.position.y <= distance &&//釘との距離で判定
             P_t.position.y>=-(StageLength-distance)&&
@@ -161,6 +161,8 @@ public class Generate : MonoBehaviour
 
     }
 
+    //---------------------------インスタンス-------------------------------//
+
     //釘のインスタンス
     void NailGenerate()
     {
@@ -187,9 +189,8 @@ public class Generate : MonoBehaviour
     void EnemyGenerate()
     {
         int side;
-        side = Random.Range(0, 1);
-        
-        if(side==0)
+        side = Random.Range(0, 2);
+        if (side==0)
         {
            　GameObject EnemyBox = Instantiate(Enemy, new Vector3(left, P_posY - distance, 0), Nailrot);
         }
@@ -208,18 +209,28 @@ public class Generate : MonoBehaviour
     //GOALエリアのインスタンス
     void GoalAreaGenerate()
     {
-        Instantiate(Goal, new Vector3((left+right)/2, -StageLength, 0), Nailrot);
+        Goal_posX = (left + right) / 2;
+        Instantiate(Goal, new Vector3(Goal_posX, -StageLength+2, 0), Nailrot);
     }
-    
-    
+
+
     //壁のインスタンス
     void WallGenerate()
     {
         //壁のインスタンス
-        Instantiate(Wall_LR, new Vector3(left, -StageLength / 2, 0), Nrot);
-        Instantiate(Wall_LR, new Vector3(right, -StageLength / 2, 0), Nrot);
+        Instantiate(Wall_LRDS, new Vector3(left, -StageLength / 2, 0), Nrot);
+        Instantiate(Wall_LRDS, new Vector3(right, -StageLength / 2, 0), Nrot);
+        
+        //底
+        GameObject WallDown = Instantiate(Wall_LRDS, new Vector3((left + right) / 2, -StageLength, 0), Nrot);
+        WallDown.transform.localScale = new Vector3(Mathf.Abs(left) + Mathf.Abs(right), 1, depth);
 
+        //斜め
+        GameObject WallSlice = Instantiate(Wall_LRDS, new Vector3((left + right) / 2, P_posY, 10), Nrot);
+        WallSlice.transform.localScale=new Vector3((left + right) / 2, 10, 1);
+        WallSlice.transform.rotation= new Quaternion(60, 60, 0, 0);///////////////////////////////
 
+        //前後
         Instantiate(Wall_BA, new Vector3((left + right) / 2, -StageLength / 2, -1.5f), Nrot);
         Instantiate(Wall_BA, new Vector3((left + right) / 2, -StageLength / 2, 1.5f), Nrot);
     }
