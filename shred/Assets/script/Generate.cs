@@ -46,9 +46,12 @@ public class Generate : MonoBehaviour
     float left = -5;
     [SerializeField]
     float right = 5;
+    
     float senter = 0;
     float depth = -2;
 
+
+    GameObject P_hip;
     GameObject c_nail;
 
     //インスタンス用無回転
@@ -91,19 +94,29 @@ public class Generate : MonoBehaviour
         P_posY = (int)Player.transform.position.y;
         time = time + Time.deltaTime;
 
-
-        //釘のインスタンス
+        //インスタンス条件
         if (Nail_t.position.y - P_t.position.y <= distance &&//釘との距離で判定
             P_t.position.y>=-(StageLength-distance)&&
                 NailTime <= time &&//一定間隔のインターバル
                 P_posYbf > P_posY)//落下していないときは生成しない
         {
-          if(Random.Range(0,20)==0) 
+            switch (Random.Range(0, 20))
             {
-
-                NGAreaGenerate();            
-            
+                case 0:
+                    //NGエリアのインスタンス
+                    NGAreaGenerate();
+                    break;
+                case 1:
+                case 2:
+                    //敵のインスタンス
+                    EnemyGenerate();
+                    break;
+                case 3:
+                    break;
+                default:
+                    break;
             }
+
             //釘のインスタンス
             NailGenerate();
             NailTime += 0.15f;
@@ -172,15 +185,17 @@ public class Generate : MonoBehaviour
     
     //敵のインスタンス
     void EnemyGenerate()
-    { int side;
+    {
+        int side;
         side = Random.Range(0, 1);
+        
         if(side==0)
         {
-            Instantiate(Enemy, new Vector3(left, P_posY - distance, 0), Nailrot);
+           　GameObject EnemyBox = Instantiate(Enemy, new Vector3(left, P_posY - distance, 0), Nailrot);
         }
         if(side==1)
         {
-            Instantiate(Enemy, new Vector3(right, P_posY - distance, 0), Nailrot);
+            GameObject EnemyBox =Instantiate(Enemy, new Vector3(right, P_posY - distance, 0), Nailrot);
         }
     }
 
