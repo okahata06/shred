@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
     GameObject Bullet;
 
     Quaternion BulletRot;
+    int Go_count = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +20,11 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       GameObject E_Bullet = Instantiate(Bullet,gameObject.transform.position,BulletRot);
+        if(Go_count>=150)
+        {
+            GameObject E_Bullet = Instantiate(Bullet, gameObject.transform.position, BulletRot);
+            Go_count = 0;
+        }
+        Go_count++;
     }
 }

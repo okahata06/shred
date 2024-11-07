@@ -24,7 +24,7 @@ public class camera : MonoBehaviour
     void Update()
     {
 
-        c_transform.position = new Vector3(target.transform.position.x, target.transform.position.y+3, C_posZ);
+        c_transform.position = new Vector3(target.transform.position.x, target.transform.position.y+5, C_posZ);
 
         c_transform.rotation = Camera_rot;
 
