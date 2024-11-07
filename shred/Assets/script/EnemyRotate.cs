@@ -10,6 +10,7 @@ public class EnemyRotate : MonoBehaviour
     [SerializeField]
     GameObject _target;
 
+
     void Start()
     {
         _target = GameObject.Find("Hips");

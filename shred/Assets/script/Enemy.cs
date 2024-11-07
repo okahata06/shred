@@ -7,21 +7,17 @@ public class Enemy : MonoBehaviour
     [SerializeField, Header("íe")]
     GameObject Bullet;
 
-    [SerializeField,Header("íeë¨")]
-    float B_Speed = 1;
-
-    Vector2 B_vec = Vector2.right;//íeÇÃï˙èoÉxÉNÉgÉã
-
+    Quaternion BulletRot;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        BulletRot=gameObject.transform.rotation;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       GameObject E_Bullet = Instantiate(Bullet,gameObject.transform.position,BulletRot);
     }
 }

@@ -25,9 +25,9 @@ public class SceneTransition : MonoBehaviour
         if (gameObject.tag == "Goal")
         {
             Goal_EntryCount++;
-            if(Goal_EntryCount>=90)
+            if(Goal_EntryCount>=120)
             {
-                Invoke("ChangeScene", 1.5f);
+                Invoke("ChangeScene", 0.5f);
 
             }
 
@@ -40,9 +40,9 @@ public class SceneTransition : MonoBehaviour
         if (gameObject.tag == "NG")
         {
             NG_EntryCount++;
-            if (NG_EntryCount >= 90)
+            if (NG_EntryCount >= 120)
             {
-                Invoke("ChangeScene", 1.5f);
+                Invoke("ChangeScene", 0.5f);
 
             }
         }
