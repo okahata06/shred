@@ -6,11 +6,15 @@ using UnityEngine;
 public class bustar : MonoBehaviour
 {
 
-    [SerializeField, Header("移動力")]
-    float bust_power=0.1f;
+    [SerializeField, Header("移動力")]　//移動量＝消費エネルギー
+    float bust_power=0.2f;
+    [SerializeField, Header("MaxEnergy")]
+    float Energy_Max=10;
 
     Rigidbody rig;
     //GameObject Hip;
+    float cooltime=0;
+    float Energy_Remaining;
 
     Quaternion quaternion;
     Vector3 set;
@@ -19,6 +23,7 @@ public class bustar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Energy_Remaining = Energy_Max;
         //Hip = transform.parent.gameObject;
         quaternion.z = gameObject.transform.rotation.z+90;
         set = new Vector3(0, bust_power, 0);
@@ -28,20 +33,41 @@ public class bustar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.LeftArrow)) { set.x = 10; }
+        //左右への移動ベクトル付与
+        if (Input.GetKey(KeyCode.RightArrow))
+        { set.x = 5; }
+        else if (Input.GetKey(KeyCode.LeftArrow)) 
+        { set.x = -5; }
         else
         {
             set.x = 0;
         }
-        if(Input.GetKeyUp(KeyCode.RightArrow)) { set.x = -10; }
-        else 
-        {
-            set.x = 0;
-        }
+        //ベクトルの正規化
         bust = Vector3.Normalize( quaternion.z * set);
-        if(Input.GetKey(KeyCode.Space))
+
+        //残量あり＆スペースを押すとブースト
+        if(Input.GetKey(KeyCode.Space) && Energy_Remaining > 0)
         {
+            //ベクトル加算
             rig.velocity += bust;
+            //エネルギー減少
+            Energy_Remaining-=bust_power;
+            
+            //残量がマイナスなら０にする
+            if(Energy_Remaining < 0) { Energy_Remaining = 0; }
+            cooltime = 0;
+
+
         }
+        //最大容量未満＆使用から２秒経過ならエネルギー回復
+        else if(Energy_Remaining<=Energy_Max&&cooltime>=2)
+        {
+            Energy_Remaining+=bust_power/3;//消費の1/3の速度
+        }
+        else
+        {//使用してからの時間経過
+            cooltime += Time.deltaTime;
+        }
+        Debug.Log(Energy_Remaining);
     }
 }

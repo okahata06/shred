@@ -17,7 +17,8 @@ public class EnemyBullet : MonoBehaviour
     void Start()
     {
         Player_t = GameObject.Find("Hips").transform;
-        Bullet_vec = Player_t.position-gameObject.transform.position;
+        Bullet_vec.x = Player_t.position.x-gameObject.transform.position.x;
+        Bullet_vec.y = Player_t.position.y-gameObject.transform.position.y;
         Bullet_vec =Vector3.Normalize(Bullet_vec);
 
 

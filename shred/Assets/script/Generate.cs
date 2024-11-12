@@ -100,7 +100,7 @@ public class Generate : MonoBehaviour
                 NailTime <= time &&//一定間隔のインターバル
                 P_posYbf > P_posY)//落下していないときは生成しない
         {
-            switch (Random.Range(0, 20))
+            switch (Random.Range(0, 40))
             {
                 case 0:
                     //NGエリアのインスタンス

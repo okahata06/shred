@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Go_count>=150)
+        if(Go_count>=180)
         {
             GameObject E_Bullet = Instantiate(Bullet, gameObject.transform.position, BulletRot);
             Go_count = 0;
