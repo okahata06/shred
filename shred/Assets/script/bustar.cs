@@ -68,6 +68,6 @@ public class bustar : MonoBehaviour
         {//Žg—p‚µ‚Ä‚©‚ç‚ÌŽžŠÔŒo‰ß
             cooltime += Time.deltaTime;
         }
-        Debug.Log(Energy_Remaining);
+      //  Debug.Log(Energy_Remaining);
     }
 }

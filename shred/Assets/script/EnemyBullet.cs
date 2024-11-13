@@ -12,6 +12,8 @@ public class EnemyBullet : MonoBehaviour
 
     int bullet_C=0;//消滅までのカウント
 
+    bool fastHit=true;
+
     Vector3 Bullet_vec;//弾の放出ベクトル
 
     // Start is called before the first frame update
@@ -42,8 +44,11 @@ public class EnemyBullet : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter(Collision col)
-    {
+    
 
+    public bool E_FastHitGetSet
+    {
+        get { return  fastHit; }
+    set { fastHit = value; }
     }
 }
