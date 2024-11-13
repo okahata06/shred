@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class SceneTransition : MonoBehaviour
 {
 
-    int NG_EntryCount=0;
-    int Goal_EntryCount=0;
+    float NG_EntryCount=0;
+    float Goal_EntryCount=0;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +24,7 @@ public class SceneTransition : MonoBehaviour
         if (oth.tag != "Player") { return ; }
         if (gameObject.tag == "Goal")
         {
-            Goal_EntryCount++;
+            Goal_EntryCount += Time.deltaTime;
             if(Goal_EntryCount>=120)
             {
                 Invoke("ChangeScene", 0.5f);
@@ -39,7 +39,7 @@ public class SceneTransition : MonoBehaviour
 
         if (gameObject.tag == "NG")
         {
-            NG_EntryCount++;
+            NG_EntryCount += Time.deltaTime;
             if (NG_EntryCount >= 120)
             {
                 Invoke("ChangeScene", 0.5f);
