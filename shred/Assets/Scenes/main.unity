@@ -2873,7 +2873,7 @@ PrefabInstance:
       objectReference: {fileID: 3249920100935237588, guid: c588fb4ff72b5474090b0ce0a43eaa2c, type: 3}
     - target: {fileID: 9168974083771494029, guid: d7c951157d18a6f44ae62bb46580d57d, type: 3}
       propertyPath: StageLength
-      value: 1000
+      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

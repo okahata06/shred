@@ -125,11 +125,11 @@ public class Generate : MonoBehaviour
         else if (Nail_t.position.y > P_t.position.y + 10)
         {
             //初期設置釘の存在確認
-            if (Nail != null && !NailCheck)
-            {
-                NailCheck = true;
-                Destroy(Nail);//エラー表示
-            }
+            //if (Nail != null && !NailCheck)
+            //{
+            //    NailCheck = true;
+            //    Destroy(Nail);//エラー表示
+            //}
             if (c_nail != null) Destroy(c_nail);
 
         }
