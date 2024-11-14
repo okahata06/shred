@@ -32,6 +32,8 @@ public class camera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
         Debug.Log(BigSmall.HitGetSet);
         if(BigSmall.HitGetSet&&C_posZ<=MaxMove)
         {
