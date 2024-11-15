@@ -6,13 +6,10 @@ public class bigSmall : MonoBehaviour
 {
 
  static bool hit=false;
-
     // Start is called before the first frame update
     void Start()
     {
     }
-
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
@@ -25,5 +22,7 @@ public class bigSmall : MonoBehaviour
     public bool HitGetSet
     {
         get { return hit; }
+        set {  hit = value; }
     }
+
 }

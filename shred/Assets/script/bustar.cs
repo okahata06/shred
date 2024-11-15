@@ -41,9 +41,9 @@ public class bustar : MonoBehaviour
     {
         //左右への移動ベクトル付与
         if (Input.GetKey(KeyCode.RightArrow))
-        { set.x = 5; }
-        else if (Input.GetKey(KeyCode.LeftArrow))
         { set.x = -5; }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        { set.x = 5; }
         else
         {
             set.x = 0;

@@ -9,8 +9,8 @@ public class wind : MonoBehaviour
      Vector3 velocity;    // •—‘¬
 
     //•—Œü‚«
-    Vector3 Left=new Vector3(-8,0,0);
-    Vector3 Right=new Vector3(8,0,0);
+    Vector3 Left=new Vector3(8,0,0);
+    Vector3 Right=new Vector3(-8,0,0);
     Vector3 Up=new Vector3(0,10,0);
     Vector3 Down=new Vector3(0,-8,0);
 
