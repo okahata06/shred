@@ -6,9 +6,11 @@ using UnityEngine;
 public class camera : MonoBehaviour
 {
     [SerializeField,Header("通常z座標")]
-    float C_posZ = 20;
+    float C_posZ = 12;
+    float C_posZKP = 12;   
     [SerializeField,Header("加算y座標")]
     float C_posY = 5;
+    float C_posYKP = 5;
     [SerializeField,Header("追跡対象")]
     public GameObject target;
 
@@ -18,6 +20,7 @@ public class camera : MonoBehaviour
     float move = 0.05f;
 
     float Count=0;//効果時間カウント用
+    int EndTime = 5;//効果終了時間
 
     bigSmall BigSmall;
 
@@ -38,17 +41,50 @@ public class camera : MonoBehaviour
     {
         
 
-        Debug.Log("C_posZ"+C_posZ+"MaxMove"+MaxMove);
-        if(BigSmall.HitGetSet&&C_posZ<=MaxMove)
+        Debug.Log(Count);
+        Debug.Log(BigSmall.HitGetSet);
+
+        //ｚ軸縮小
+        if (BigSmall.HitGetSet&&C_posZ<=MaxMove)
         {
             C_posZ += move;
         }
+        //ｙ軸縮小
         if(BigSmall.HitGetSet && C_posY <= MaxMove/2.7)
         {
             C_posY += move;
 
         }
-        if(BigSmall.HitGetSet) { Count }
+        //効果時間カウント
+        if(BigSmall.HitGetSet) 
+        {
+            Count+=Time.deltaTime;
+        }
+        if(Count >= EndTime)
+        {
+            BigSmall.HitGetSet = false;
+            Count = 0;
+
+        }
+
+
+
+        //ｚ軸拡大
+        if (C_posZ>=C_posZKP)
+        {
+            C_posZ -= move;
+
+            //ｙ軸拡大
+            if (Count >= EndTime && C_posY >= C_posYKP)
+            {
+                C_posY -= move;
+            }
+            else
+            {
+            }
+
+        }
+
         c_transform.position = new Vector3(target.transform.position.x, target.transform.position.y+C_posY, C_posZ);
 
         c_transform.rotation = Camera_rot;
