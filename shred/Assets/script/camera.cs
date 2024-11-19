@@ -8,19 +8,22 @@ public class camera : MonoBehaviour
     [SerializeField,Header("通常z座標")]
     float C_posZ = 12;
     float C_posZKP = 12;   
-    [SerializeField,Header("加算y座標")]
+    [SerializeField,Header("通常y座標")]
     float C_posY = 5;
     float C_posYKP = 5;
     [SerializeField,Header("追跡対象")]
     public GameObject target;
 
     [SerializeField, Header("拡縮量")]
-    float MaxMove = 10;
+    float MaxMoveZ = 10;
+    [SerializeField]
+    float MaxMoveY = 10;
 
-    float move = 0.05f;
+    float move = 0.03f;
 
     float Count=0;//効果時間カウント用
-    int EndTime = 5;//効果終了時間
+    [SerializeField,Header("効果時間(秒)")]
+    int EndTime = 10;
 
     bigSmall BigSmall;
 
@@ -32,27 +35,24 @@ public class camera : MonoBehaviour
     void Start()
     {
         BigSmall=new bigSmall();
-        MaxMove += C_posZ;
+        MaxMoveZ += C_posZ;
+        MaxMoveY += C_posY;
         c_transform= GetComponent<Transform>();
     }
-
     // Update is called once per frame
     void Update()
     {
-        
-
-        Debug.Log(Count);
         Debug.Log(BigSmall.HitGetSet);
 
         //ｚ軸縮小
-        if (BigSmall.HitGetSet&&C_posZ<=MaxMove)
+        if (BigSmall.HitGetSet&&C_posZ<=MaxMoveZ)
         {
             C_posZ += move;
         }
         //ｙ軸縮小
-        if(BigSmall.HitGetSet && C_posY <= MaxMove/2.7)
+        if(BigSmall.HitGetSet && C_posY <= MaxMoveY/2.5)
         {
-            C_posY += move;
+            C_posY += move/2;
 
         }
         //効果時間カウント
@@ -60,6 +60,7 @@ public class camera : MonoBehaviour
         {
             Count+=Time.deltaTime;
         }
+        //時間経過後終了
         if(Count >= EndTime)
         {
             BigSmall.HitGetSet = false;
@@ -70,20 +71,17 @@ public class camera : MonoBehaviour
 
 
         //ｚ軸拡大
-        if (C_posZ>=C_posZKP)
+        if (C_posZ>=C_posZKP&&Count==0)
         {
-            C_posZ -= move;
-
-            //ｙ軸拡大
-            if (Count >= EndTime && C_posY >= C_posYKP)
-            {
-                C_posY -= move;
-            }
-            else
-            {
-            }
+            C_posZ -= move;            
 
         }
+        //ｙ軸拡大
+        if (C_posY >= C_posYKP && Count == 0)
+        {
+            C_posY -= move/2;
+        }
+
 
         c_transform.position = new Vector3(target.transform.position.x, target.transform.position.y+C_posY, C_posZ);
 

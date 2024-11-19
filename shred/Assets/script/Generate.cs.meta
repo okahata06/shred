@@ -7,9 +7,11 @@ MonoImporter:
   - Player: {instanceID: 0}
   - Enemy: {fileID: 2627233413937007367, guid: c7ad6a21c0affc740b382882daafc391, type: 3}
   - Nail: {fileID: 6142167205557908203, guid: ff8e9ab8afc01fa44964559bc356765b, type: 3}
+  - bigSmall: {fileID: 3257994829620423003, guid: 7479b545f2f2557498fd44ec15e401a0, type: 3}
+  - Slot: {instanceID: 0}
   - NG: {fileID: 1988076482909624541, guid: c388a4db4dc23e341bae3ed000a9186d, type: 3}
   - Goal: {fileID: 3518551096124332402, guid: 81554f933a1d8e54c8fb2b708609da80, type: 3}
-  - Wall_LR: {fileID: 3249920100935237588, guid: c588fb4ff72b5474090b0ce0a43eaa2c, type: 3}
+  - Wall_LRDS: {instanceID: 0}
   - Wall_BA: {fileID: 6581137838955017114, guid: 91d279d23d29ca14b871ee6f5bf7c2c8, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}

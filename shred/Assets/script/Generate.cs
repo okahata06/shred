@@ -28,7 +28,11 @@ public class Generate : MonoBehaviour
     [SerializeField, Header("釘")]
     GameObject Nail;
     Transform Nail_t;
-  
+    [SerializeField, Header("アイテム")]
+    GameObject bigSmall;
+    [SerializeField]
+    GameObject Slot;
+
     [SerializeField, Header("NGエリア")]
     GameObject NG;
     [SerializeField, Header("ゴール")]
@@ -100,18 +104,24 @@ public class Generate : MonoBehaviour
                 NailTime <= time &&//一定間隔のインターバル
                 P_posYbf > P_posY)//落下していないときは生成しない
         {
-            switch (Random.Range(0, 40))
+            //確率でインスタンス
+            switch (Random.Range(0, 60))
             {
                 case 0:
+                case 1:
                     //NGエリアのインスタンス
                     NGAreaGenerate();
                     break;
-                case 1:
                 case 2:
+                case 3:
+                case 4:
                     //敵のインスタンス
                     EnemyGenerate();
                     break;
-                case 3:
+                case 5:
+                case 6:
+                    //アイテム系のインスタンス
+                    ItemGenerate();
                     break;
                 default:
                     break;
@@ -235,5 +245,9 @@ public class Generate : MonoBehaviour
         Instantiate(Wall_BA, new Vector3((left + right) / 2, -StageLength / 2, 1.5f), Nrot);
     }
 
+    void ItemGenerate()
+    {
+       GameObject BigSmall = Instantiate(bigSmall, new Vector3(Random.Range(senter, right), P_posY - distance, 0), Nrot);
+    }
 
 }

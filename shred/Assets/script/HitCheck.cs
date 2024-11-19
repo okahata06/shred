@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
 public class HitCheck : MonoBehaviour
@@ -37,11 +38,86 @@ public class HitCheck : MonoBehaviour
         E_BulletHit = EnemyBullet.E_FastHitGetSet;
 
         //àÍíËà»è„ìñÇΩÇ¡ÇΩÇÁÉTÉCÉYÇè¡ÇµÇƒîjâÛÇ∑ÇÈ
-        if (col.gameObject.tag == ("Nail") || col.gameObject.tag == ("EnemyBullet") && E_BulletHit)
+        if (col.gameObject.tag == ("Nail"))
+        {
+            AudioClip audio = (AudioClip)Resources.Load("îjâÛâπ_íZÇ¢");
+            Hit_C++;
+            if (col.gameObject.tag == ("EnemyBullet"))
+            { EnemyBullet.E_FastHitGetSet = true; }
+
+            if (gameObject.name == ("LeftLeg"))//ç∂ëæÇ‡Ç‡
+            {
+                if (Hit_C == thredbreak)
+                    transform.localScale = Vector3.zero;
+            }
+            if (gameObject.name == ("LeftCalf"))//ç∂Ç”Ç≠ÇÁÇÕÇ¨
+            {
+                if (Hit_C == secondbreak)
+                    transform.localScale = Vector3.zero;
+            }
+            if (gameObject.name == ("LeftFoot"))//ç∂ë´êÊ
+            {
+                if (Hit_C == fastbreak)
+                    transform.localScale = Vector3.zero;
+            }
+            if (gameObject.name == ("RightLeg"))//âEëæÇ‡Ç‡
+            {
+                if (Hit_C == thredbreak)
+                    transform.localScale = Vector3.zero;
+            }
+            if (gameObject.name == ("RightCalf"))//âEÇ”Ç≠ÇÁÇÕÇ¨
+            {
+                if (Hit_C == secondbreak)
+                    transform.localScale = Vector3.zero;
+            }
+            if (gameObject.name == ("RightFoot"))//âEë´êÊ
+            {
+                if (Hit_C == fastbreak)
+                    transform.localScale = Vector3.zero;
+            }
+            if (gameObject.name == ("LeftUpperArm"))//ç∂è„òr
+            {
+                if (Hit_C == thredbreak)
+                    transform.localScale = Vector3.zero;
+            }
+            if (gameObject.name == ("LeftArm"))//ç∂òr
+            {
+                if (Hit_C == secondbreak)
+                    transform.localScale = Vector3.zero;
+            }
+            if (gameObject.name == ("LeftHand"))//ç∂éË
+            {
+                if (Hit_C == fastbreak)
+                    transform.localScale = Vector3.zero;
+            }
+            if (gameObject.name == ("RightUpperArm"))//âEè„òr
+            {
+                if (Hit_C == thredbreak)
+                    transform.localScale = Vector3.zero;
+            }
+            if (gameObject.name == ("RightArm"))//âEòr
+            {
+                if (Hit_C == secondbreak)
+                    transform.localScale = Vector3.zero;
+            }
+            if (gameObject.name == ("RightHand"))//âEéË
+            {
+                if (Hit_C == fastbreak)
+                    transform.localScale = Vector3.zero;
+            }
+            if (gameObject.name == ("Head"))//ì™ïî
+            {
+                if (Hit_C == secondbreak)
+                    transform.localScale = Vector3.zero;
+            }
+        }
+        //íeÇ…ìñÇΩÇ¡ÇΩèÍçá
+        if ( col.gameObject.tag == ("EnemyBullet") && E_BulletHit)
         {
             Hit_C++;
             if (col.gameObject.tag == ("EnemyBullet"))
             { EnemyBullet.E_FastHitGetSet = true; }
+
             if (gameObject.name == ("LeftLeg"))//ç∂ëæÇ‡Ç‡
             {
                 if (Hit_C == thredbreak)
