@@ -18,7 +18,11 @@ public class HitCheck : MonoBehaviour
     int secondbreak=20;
     int thredbreak=30;
     int Hit_C = 0;
-    AudioClip HitSE;
+
+
+    //スクリプト内で音を入れてみる
+    AudioClip HitSE_nail;
+    AudioClip HitSE_bullet;
     AudioSource audiosource;
     AudioMixer audioMixer;
 
@@ -26,11 +30,12 @@ public class HitCheck : MonoBehaviour
     void Start()
     {
         //スクリプト内で音を入れてみる
-        HitSE = (AudioClip)Resources.Load("破壊音_短い");//音源取得
+        HitSE_nail = (AudioClip)Resources.Load("大型ロボットの足音");//音源取得
+        HitSE_bullet = (AudioClip)Resources.Load("大型ロボットの足音");//音源取得
+
         audiosource =gameObject.AddComponent<AudioSource>();//コンポ作成
-        audiosource.clip = HitSE;//音源セット
         audioMixer= (AudioMixer)Resources.Load("AudioMixer");//ミキサー取得。グループだけの取得はできなかった
-        audiosource.outputAudioMixerGroup = audioMixer.FindMatchingGroups("SE")[0];//ミキサーグループの取得
+        audiosource.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Hit")[0];//ミキサーグループの取得
 
 
         EnemyBullet = new EnemyBullet();
@@ -53,7 +58,12 @@ public class HitCheck : MonoBehaviour
         //一定以上当たったらサイズを消して破壊する
         if (col.gameObject.tag == ("Nail"))
         {
+
+            audiosource.clip = HitSE_nail;//音源セット
+
+            //SE再生
             audiosource.Play();
+
             Hit_C++;
             if (col.gameObject.tag == ("EnemyBullet"))
             { EnemyBullet.E_FastHitGetSet = true; }
@@ -127,6 +137,13 @@ public class HitCheck : MonoBehaviour
         //弾に当たった場合
         if ( col.gameObject.tag == ("EnemyBullet") && E_BulletHit)
         {
+
+
+            audiosource.clip = HitSE_bullet;//音源セット
+
+            //SE再生
+            audiosource.Play();
+
             Hit_C++;
             if (col.gameObject.tag == ("EnemyBullet"))
             { EnemyBullet.E_FastHitGetSet = true; }
