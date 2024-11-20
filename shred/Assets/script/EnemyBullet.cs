@@ -19,6 +19,7 @@ public class EnemyBullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         //プレイヤーの座標取得
         Player_t = GameObject.Find("Hips").transform;
 
@@ -35,6 +36,7 @@ public class EnemyBullet : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+
         //ベクトル方向に移動
         transform.position += Bullet_vec;
         

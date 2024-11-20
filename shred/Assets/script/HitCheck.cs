@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.PackageManager.UI;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class HitCheck : MonoBehaviour
 {
@@ -16,10 +18,21 @@ public class HitCheck : MonoBehaviour
     int secondbreak=20;
     int thredbreak=30;
     int Hit_C = 0;
+    AudioClip HitSE;
+    AudioSource audiosource;
+    AudioMixer audioMixer;
 
     // Start is called before the first frame update
     void Start()
     {
+        //スクリプト内で音を入れてみる
+        HitSE = (AudioClip)Resources.Load("破壊音_短い");//音源取得
+        audiosource =gameObject.AddComponent<AudioSource>();//コンポ作成
+        audiosource.clip = HitSE;//音源セット
+        audioMixer= (AudioMixer)Resources.Load("AudioMixer");//ミキサー取得。グループだけの取得はできなかった
+        audiosource.outputAudioMixerGroup = audioMixer.FindMatchingGroups("SE")[0];//ミキサーグループの取得
+
+
         EnemyBullet = new EnemyBullet();
         E_BulletHit = EnemyBullet.E_FastHitGetSet;
         //種別コライダーの取得
@@ -36,11 +49,11 @@ public class HitCheck : MonoBehaviour
     private void OnCollisionEnter(Collision col)
     {
         E_BulletHit = EnemyBullet.E_FastHitGetSet;
-
+        
         //一定以上当たったらサイズを消して破壊する
         if (col.gameObject.tag == ("Nail"))
         {
-            AudioClip audio = (AudioClip)Resources.Load("破壊音_短い");
+            audiosource.Play();
             Hit_C++;
             if (col.gameObject.tag == ("EnemyBullet"))
             { EnemyBullet.E_FastHitGetSet = true; }
