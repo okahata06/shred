@@ -8,15 +8,18 @@ using UnityEngine.Audio;
 
 public class HitCheck : MonoBehaviour
 {
+
     EnemyBullet EnemyBullet;
 
     BoxCollider BC;
     CapsuleCollider CC;
 
+
+
     bool E_BulletHit;
-    int fastbreak=10;
-    int secondbreak=20;
-    int thredbreak=30;
+    int fastbreak=10;//ëÊéOä÷êﬂ
+    int secondbreak=20;//ëÊìÒä÷êﬂ
+    int thredbreak=30;//ëÊàÍä÷êﬂ
     int Hit_C = 0;
 
 
@@ -71,67 +74,106 @@ public class HitCheck : MonoBehaviour
             if (gameObject.name == ("LeftLeg"))//ç∂ëæÇ‡Ç‡
             {
                 if (Hit_C == thredbreak)
+                {
                     transform.localScale = Vector3.zero;
+                    Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+                }
             }
             if (gameObject.name == ("LeftCalf"))//ç∂Ç”Ç≠ÇÁÇÕÇ¨
             {
                 if (Hit_C == secondbreak)
+                {
                     transform.localScale = Vector3.zero;
+                    Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+                }
             }
             if (gameObject.name == ("LeftFoot"))//ç∂ë´êÊ
             {
                 if (Hit_C == fastbreak)
+                {
                     transform.localScale = Vector3.zero;
+                    Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+                }
             }
             if (gameObject.name == ("RightLeg"))//âEëæÇ‡Ç‡
             {
                 if (Hit_C == thredbreak)
+                {
                     transform.localScale = Vector3.zero;
+                    Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+                }
             }
             if (gameObject.name == ("RightCalf"))//âEÇ”Ç≠ÇÁÇÕÇ¨
             {
                 if (Hit_C == secondbreak)
+                {
                     transform.localScale = Vector3.zero;
+                    Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+                }
             }
             if (gameObject.name == ("RightFoot"))//âEë´êÊ
             {
                 if (Hit_C == fastbreak)
+                {
                     transform.localScale = Vector3.zero;
+                    Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+                }
             }
             if (gameObject.name == ("LeftUpperArm"))//ç∂è„òr
             {
                 if (Hit_C == thredbreak)
+                {
                     transform.localScale = Vector3.zero;
+                    Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+                }
             }
             if (gameObject.name == ("LeftArm"))//ç∂òr
             {
                 if (Hit_C == secondbreak)
+                {
                     transform.localScale = Vector3.zero;
+                    Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+                }
             }
             if (gameObject.name == ("LeftHand"))//ç∂éË
             {
                 if (Hit_C == fastbreak)
+                {
                     transform.localScale = Vector3.zero;
+                    Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+                }
             }
             if (gameObject.name == ("RightUpperArm"))//âEè„òr
             {
                 if (Hit_C == thredbreak)
+                {
                     transform.localScale = Vector3.zero;
+                    Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+                }
             }
             if (gameObject.name == ("RightArm"))//âEòr
             {
                 if (Hit_C == secondbreak)
+                {
                     transform.localScale = Vector3.zero;
+                    Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+                }
             }
             if (gameObject.name == ("RightHand"))//âEéË
             {
                 if (Hit_C == fastbreak)
+                {
                     transform.localScale = Vector3.zero;
+                    Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+                }
             }
             if (gameObject.name == ("Head"))//ì™ïî
             {
                 if (Hit_C == secondbreak)
+                {
                     transform.localScale = Vector3.zero;
+                    Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+                }
             }
         }
         //íeÇ…ìñÇΩÇ¡ÇΩèÍçá
