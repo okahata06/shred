@@ -8,6 +8,7 @@ using UnityEngine.Audio;
 
 public class HitCheck : MonoBehaviour
 {
+    GameObject effect;
 
     EnemyBullet EnemyBullet;
 
