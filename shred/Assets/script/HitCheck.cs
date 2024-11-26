@@ -8,7 +8,13 @@ using UnityEngine.Audio;
 
 public class HitCheck : MonoBehaviour
 {
-    GameObject effect;
+
+    [SerializeField]
+    GameObject Hit;
+
+    EffectManager EM;//エフェクト取得
+    GameObject Bomb;
+
 
     EnemyBullet EnemyBullet;
 
@@ -33,6 +39,7 @@ public class HitCheck : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         //スクリプト内で音を入れてみる
         HitSE_nail = (AudioClip)Resources.Load("大型ロボットの足音");//音源取得
         HitSE_bullet = (AudioClip)Resources.Load("大型ロボットの足音");//音源取得
@@ -53,6 +60,9 @@ public class HitCheck : MonoBehaviour
         {
             CC = gameObject.GetComponent<CapsuleCollider>();
         }
+        //エフェクト入れる
+        EM = new EffectManager();
+
     }
 
     private void OnCollisionEnter(Collision col)
@@ -65,6 +75,8 @@ public class HitCheck : MonoBehaviour
 
             audiosource.clip = HitSE_nail;//音源セット
 
+            //ヒットエフェクト
+            HitEffect();
             //SE再生
             audiosource.Play();
 
@@ -77,7 +89,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == thredbreak)
                 {
                     transform.localScale = Vector3.zero;
-                    Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+                    Instantiate(Bomb, gameObject.transform.position, Quaternion.identity);
                 }
             }
             if (gameObject.name == ("LeftCalf"))//左ふくらはぎ
@@ -85,7 +97,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == secondbreak)
                 {
                     transform.localScale = Vector3.zero;
-                    Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+                    Instantiate(Bomb, gameObject.transform.position, Quaternion.identity);
                 }
             }
             if (gameObject.name == ("LeftFoot"))//左足先
@@ -93,7 +105,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == fastbreak)
                 {
                     transform.localScale = Vector3.zero;
-                    Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+                    Instantiate(Bomb, gameObject.transform.position, Quaternion.identity);
                 }
             }
             if (gameObject.name == ("RightLeg"))//右太もも
@@ -101,7 +113,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == thredbreak)
                 {
                     transform.localScale = Vector3.zero;
-                    Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+                    Instantiate(Bomb, gameObject.transform.position, Quaternion.identity);
                 }
             }
             if (gameObject.name == ("RightCalf"))//右ふくらはぎ
@@ -109,7 +121,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == secondbreak)
                 {
                     transform.localScale = Vector3.zero;
-                    Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+                    Instantiate(Bomb, gameObject.transform.position, Quaternion.identity);
                 }
             }
             if (gameObject.name == ("RightFoot"))//右足先
@@ -117,7 +129,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == fastbreak)
                 {
                     transform.localScale = Vector3.zero;
-                    Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+                    Instantiate(Bomb, gameObject.transform.position, Quaternion.identity);
                 }
             }
             if (gameObject.name == ("LeftUpperArm"))//左上腕
@@ -125,7 +137,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == thredbreak)
                 {
                     transform.localScale = Vector3.zero;
-                    Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+                    Instantiate(Bomb, gameObject.transform.position, Quaternion.identity);
                 }
             }
             if (gameObject.name == ("LeftArm"))//左腕
@@ -133,7 +145,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == secondbreak)
                 {
                     transform.localScale = Vector3.zero;
-                    Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+                    Instantiate(Bomb, gameObject.transform.position, Quaternion.identity);
                 }
             }
             if (gameObject.name == ("LeftHand"))//左手
@@ -141,7 +153,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == fastbreak)
                 {
                     transform.localScale = Vector3.zero;
-                    Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+                    Instantiate(Bomb, gameObject.transform.position, Quaternion.identity);
                 }
             }
             if (gameObject.name == ("RightUpperArm"))//右上腕
@@ -149,7 +161,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == thredbreak)
                 {
                     transform.localScale = Vector3.zero;
-                    Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+                    Instantiate(Bomb, gameObject.transform.position, Quaternion.identity);
                 }
             }
             if (gameObject.name == ("RightArm"))//右腕
@@ -157,7 +169,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == secondbreak)
                 {
                     transform.localScale = Vector3.zero;
-                    Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+                    Instantiate(Bomb, gameObject.transform.position, Quaternion.identity);
                 }
             }
             if (gameObject.name == ("RightHand"))//右手
@@ -165,7 +177,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == fastbreak)
                 {
                     transform.localScale = Vector3.zero;
-                    Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+                    Instantiate(Bomb, gameObject.transform.position, Quaternion.identity);
                 }
             }
             if (gameObject.name == ("Head"))//頭部
@@ -173,7 +185,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == secondbreak)
                 {
                     transform.localScale = Vector3.zero;
-                    Instantiate(effect, gameObject.transform.position, Quaternion.identity);
+                    Instantiate(Bomb, gameObject.transform.position, Quaternion.identity);
                 }
             }
         }
@@ -259,5 +271,11 @@ public class HitCheck : MonoBehaviour
 
 
         }
+    }
+
+    void HitEffect()
+    {
+        GameObject HitEffect= Instantiate(Hit, transform.position, transform.rotation);
+
     }
 }
