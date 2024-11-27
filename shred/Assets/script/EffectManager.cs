@@ -16,7 +16,7 @@ public class EffectManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    public GameObject GetSet1Effect
+    public GameObject Get1Effect
     {
         get {  return effect[0]; } 
     }

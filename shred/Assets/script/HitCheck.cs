@@ -8,6 +8,7 @@ using UnityEngine.Audio;
 
 public class HitCheck : MonoBehaviour
 {
+    EffectManager EM;
     GameObject effect;
 
     EnemyBullet EnemyBullet;
@@ -33,6 +34,10 @@ public class HitCheck : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        EM = GameObject.Find("effectManager").GetComponent<EffectManager>();
+        effect = EM.Get1Effect;
+        Debug.Log(EM.name);
+        Debug.Log(effect.name);
         //スクリプト内で音を入れてみる
         HitSE_nail = (AudioClip)Resources.Load("大型ロボットの足音");//音源取得
         HitSE_bullet = (AudioClip)Resources.Load("大型ロボットの足音");//音源取得
@@ -64,6 +69,8 @@ public class HitCheck : MonoBehaviour
         {
 
             audiosource.clip = HitSE_nail;//音源セット
+
+            Instantiate(effect,transform.position,transform.rotation);
 
             //SE再生
             audiosource.Play();
