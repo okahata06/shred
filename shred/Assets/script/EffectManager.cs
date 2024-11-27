@@ -8,8 +8,6 @@ public class EffectManager : MonoBehaviour
     [SerializeField]
     GameObject[] effect;
 
-    [SerializeField]
-    GameObject eeee;
     
 
     int E_volume=0;
@@ -21,16 +19,16 @@ public class EffectManager : MonoBehaviour
 
 
     // Update is called once per frame
-    public void Effect1()
+    public GameObject GetEffect1
     {
-        Instantiate(effect[0]);
+        get { return effect[0]; }
     }
-    public void Effect2()
+    public GameObject GetEffect2
     {
-        Instantiate(eeee);
+        get { return effect[1]; }
     }
-    public void Effect3()
+    public GameObject GetEffect3
     {
-        Instantiate(effect[2]);
+        get { return effect[2]; }
     }
 }
