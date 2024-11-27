@@ -16,9 +16,17 @@ public class EnemyBullet : MonoBehaviour
 
     Vector3 Bullet_vec;//弾の放出ベクトル
 
+    //エフェクト取得用
+    EffectManager EM;
+    GameObject BulletEffect;
+    GameObject Bullet_E;
+
     // Start is called before the first frame update
     void Start()
     {
+        //エフェクト取得
+        EM=GameObject.FindGameObjectWithTag("EffectManager").GetComponent<EffectManager>();
+        BulletEffect=EM.GetEffect2;
 
         //プレイヤーの座標取得
         Player_t = GameObject.Find("Hips").transform;

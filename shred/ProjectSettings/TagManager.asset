@@ -10,6 +10,8 @@ TagManager:
   - NG
   - Wall
   - EnemyBullet
+  - BulletEffect
+  - EffectManager
   layers:
   - Default
   - TransparentFX

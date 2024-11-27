@@ -4713,7 +4713,7 @@ GameObject:
   - component: {fileID: 445919166814261243}
   m_Layer: 0
   m_Name: "\u30A8\u30CD\u30EB\u30AE\u30FC"
-  m_TagString: Untagged
+  m_TagString: BulletEffect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4742,7 +4742,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100002}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5376de48580d23546837abc67d607b5f, type: 3}
   m_Name: 
