@@ -8,13 +8,18 @@ public class EffectManager : MonoBehaviour
     [SerializeField]
     GameObject[] effect;
 
-    
+    ParticleSystem PS;
+
+    EnemyBullet EB;
+    Vector3 Bullet_vec;
 
     int E_volume=0;
     // Start is called before the first frame update
     void Start()
     {
         E_volume = effect.Length;
+
+
     }
 
 

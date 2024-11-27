@@ -20,7 +20,7 @@ public class EnemyBullet : MonoBehaviour
     EffectManager EM;
     GameObject BulletEffect;
     GameObject Bullet_E;
-
+    int c=0;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +44,12 @@ public class EnemyBullet : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-
+        c++;
+        if(c>=10)
+        {
+            Instantiate(BulletEffect, transform.position, transform.rotation);
+            c = 0;
+        }
         //ƒxƒNƒgƒ‹•ûŒü‚ÉˆÚ“®
         transform.position += Bullet_vec;
         
