@@ -6,7 +6,7 @@ public class EffectDestory : MonoBehaviour
 {
     
 
-    int Count = 0;
+    float Count = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +16,17 @@ public class EffectDestory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Count++;
-        if (Count >= 400 )
+        Count += Time.deltaTime;
+
+        if (CompareTag("BulletEffect")&&Count>=0.34)
+        {
+            Destroy(gameObject);
+
+        }
+
+        if (Count >= 4 )
         {
             Destroy( gameObject );
         }
-        Debug.Log(Count);
     }
 }
