@@ -18,13 +18,13 @@ public class EffectDestory : MonoBehaviour
     {
         Count += Time.deltaTime;
 
-        if (CompareTag("BulletEffect")&&Count>=0.34)
+        if (CompareTag("BulletEffect")&&Count>=0.3)
         {
             Destroy(gameObject);
 
         }
 
-        if (Count >= 4 )
+        if (Count >= 1 )
         {
             Destroy( gameObject );
         }

@@ -16,7 +16,7 @@ public class EnemyBullet : MonoBehaviour
 
     Vector3 Bullet_vec;//弾の放出ベクトル
     Vector3 BE_vec;//エフェクトの座標
-    int BEx = 35;//エフェクトの位置調整として、Bullet_vecにかける
+    int BEx = 0;//エフェクトの位置調整として、Bullet_vecにかける
 
     //エフェクト取得用
     EffectManager EM;
@@ -45,11 +45,10 @@ public class EnemyBullet : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        BE_vec=new Vector3(transform.position.x+ (Bullet_vec.x*BEx), transform.position.y + (Bullet_vec.y*BEx),transform.position.z);
         c++;
         if(c>=10)
         {
-            Instantiate(BulletEffect, BE_vec, transform.rotation);
+            Instantiate(BulletEffect, transform.position, transform.rotation);
             c = 0;
         }
         //ベクトル方向に移動
@@ -58,7 +57,6 @@ public class EnemyBullet : MonoBehaviour
         //消滅カウント
         bullet_C++;
         if (bullet_C >= 1300) { Destroy(gameObject); }
-        Debug.Log(Bullet_vec);
     }
 
 
