@@ -179,6 +179,9 @@ public class HitCheck : MonoBehaviour
 
             audiosource.clip = HitSE_bullet;//音源セット
 
+            //Hitエフェクト再生
+            Instantiate(HitEffect, transform.position, transform.rotation);
+
             //SE再生
             audiosource.Play();
 

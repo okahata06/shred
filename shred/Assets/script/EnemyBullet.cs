@@ -46,7 +46,7 @@ public class EnemyBullet : MonoBehaviour
     private void Update()
     {
         c++;
-        if(c>=10)
+        if(c>=11)
         {
             Instantiate(BulletEffect, transform.position, transform.rotation);
             c = 0;
