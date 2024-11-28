@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17961453, g: 0.2248984, b: 0.30646664, a: 1}
+  m_IndirectSpecularColor: {r: 0.17961472, g: 0.22489887, b: 0.30646726, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -151,6 +151,11 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1 &236825377 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 3}
+  m_PrefabInstance: {fileID: 1209602633}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &320756599
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -589,7 +594,7 @@ MonoBehaviour:
   effect:
   - {fileID: 167058, guid: 1625b0df15965450c86850dd6d345e87, type: 3}
   - {fileID: 100002, guid: c17698f595aa942cab4326f0ffaf25c2, type: 3}
-  - {fileID: 155548, guid: d50f5f5d5a171443fa76bc1f6fc90473, type: 3}
+  - {fileID: 236825377}
 --- !u!4 &636733542
 Transform:
   m_ObjectHideFlags: 0

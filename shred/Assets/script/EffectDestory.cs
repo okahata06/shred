@@ -24,7 +24,7 @@ public class EffectDestory : MonoBehaviour
 
         }
 
-        if (Count >= 1 )
+        if (Count >= 2 )
         {
             Destroy( gameObject );
         }
