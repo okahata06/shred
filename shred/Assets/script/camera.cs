@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class camera : MonoBehaviour
 {
@@ -29,7 +30,13 @@ public class camera : MonoBehaviour
 
     Transform c_transform;
 
-    Quaternion Camera_rot=Quaternion.Euler(25,180,0);
+    //タイトル画面時のカメラ座標
+    Vector3 Title_pos;
+    Quaternion title_rot = Quaternion.Euler(25, 180, 0);
+
+    //ゲーム中のカメラ座標
+    Vector3 PlayMode_pos;
+    Quaternion PlayMode_rot=Quaternion.Euler(25,180,0);
 
     // Start is called before the first frame update
     void Start()
@@ -58,12 +65,13 @@ public class camera : MonoBehaviour
         if(BigSmall.HitGetSet) 
         {
             Count+=Time.deltaTime;
-        }
-        //時間経過後終了
-        if(Count >= EndTime)
-        {
-            BigSmall.HitGetSet = false;
-            Count = 0;
+            //時間経過後終了
+            if (Count >= EndTime)
+            {
+                BigSmall.HitGetSet = false;
+                Count = 0;
+
+            }
 
         }
 
@@ -81,10 +89,13 @@ public class camera : MonoBehaviour
             C_posY -= move/2;
         }
 
+        //プレイ中の座標
+        PlayMode_pos = new Vector3(target.transform.position.x, target.transform.position.y + C_posY, C_posZ);
 
-        c_transform.position = new Vector3(target.transform.position.x, target.transform.position.y+C_posY, C_posZ);
 
-        c_transform.rotation = Camera_rot;
+        c_transform.position = PlayMode_pos;
+
+        c_transform.rotation = PlayMode_rot;
 
     }
 }
