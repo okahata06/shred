@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -26,7 +28,10 @@ public class camera : MonoBehaviour
     [SerializeField,Header("Œø‰ÊŽžŠÔ(•b)")]
     int EndTime = 10;
 
-    bigSmall BigSmall;
+    ShakeByPerlinNoise PerlinNoise;
+
+
+bigSmall BigSmall;
 
     Transform c_transform;
 
@@ -45,6 +50,8 @@ public class camera : MonoBehaviour
         MaxMoveZ += C_posZ;
         MaxMoveY += C_posY;
         c_transform= GetComponent<Transform>();
+        PerlinNoise = GetComponent<ShakeByPerlinNoise>();
+        PerlinNoise.StartShake(3, 50, 30);
     }
     // Update is called once per frame
     void Update()
@@ -74,7 +81,7 @@ public class camera : MonoBehaviour
             }
 
         }
-
+        
 
 
         //‚šŽ²Šg‘å
@@ -97,5 +104,13 @@ public class camera : MonoBehaviour
 
         c_transform.rotation = PlayMode_rot;
 
+    }
+
+    float Randomvibration(float strength)
+    {
+        float vibration = 0;
+        vibration = UnityEngine.Random.Range(-strength, strength);
+
+        return vibration;
     }
 }
