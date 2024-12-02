@@ -34,9 +34,16 @@ public class HitCheck : MonoBehaviour
     AudioSource audiosource;
     AudioMixer audioMixer;
 
+    //カメラの振動
+    camera cmr;
+    bool isVibration;
+
     // Start is called before the first frame update
     void Start()
     {
+        //カメラ振動bool取得
+        cmr = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<camera>();
+
         //エフェクト取得
         EM = GameObject.FindGameObjectWithTag("EffectManager").GetComponent<EffectManager>();
         HitEffect = EM.GetEffect1;
@@ -67,7 +74,6 @@ public class HitCheck : MonoBehaviour
     private void OnCollisionEnter(Collision col)
     {
         E_BulletHit = EnemyBullet.E_FastHitGetSet;
-
         //一定以上当たったらサイズを消して破壊する
         if (col.gameObject.tag == ("Nail"))
         {
@@ -96,6 +102,8 @@ public class HitCheck : MonoBehaviour
                     audiosource.Play();
                     //breakエフェクト再生
                     Instantiate(BreakEffect, transform.position, transform.rotation);
+                    cmr.GetSetVibLevel = 0.2f;
+                    cmr.GetSetisViberation = true;
 
                 }
             }
@@ -108,6 +116,8 @@ public class HitCheck : MonoBehaviour
                     audiosource.Play();
                     //breakエフェクト再生
                     Instantiate(BreakEffect, transform.position, transform.rotation);
+                    cmr.GetSetVibLevel = 0.2f;
+                    cmr.GetSetisViberation = true;
                 }
             }
             else if (gameObject.name == ("LeftFoot"))//左足先
@@ -119,6 +129,8 @@ public class HitCheck : MonoBehaviour
                     audiosource.Play();
                     //breakエフェクト再生
                     Instantiate(BreakEffect, transform.position, transform.rotation);
+                    cmr.GetSetVibLevel = 0.2f;
+                    cmr.GetSetisViberation = true;
                 }
             }
             else if (gameObject.name == ("RightLeg"))//右太もも
@@ -130,6 +142,8 @@ public class HitCheck : MonoBehaviour
                     audiosource.Play();
                     //breakエフェクト再生
                     Instantiate(BreakEffect, transform.position, transform.rotation);
+                    cmr.GetSetVibLevel = 0.2f;
+                    cmr.GetSetisViberation = true;
                 }
             }
             else if (gameObject.name == ("RightCalf"))//右ふくらはぎ
@@ -141,6 +155,8 @@ public class HitCheck : MonoBehaviour
                     audiosource.Play();
                     //breakエフェクト再生
                     Instantiate(BreakEffect, transform.position, transform.rotation);
+                    cmr.GetSetVibLevel = 0.2f;
+                    cmr.GetSetisViberation = true;
                 }
             }
             else if (gameObject.name == ("RightFoot"))//右足先
@@ -152,6 +168,8 @@ public class HitCheck : MonoBehaviour
                     audiosource.Play();
                     //breakエフェクト再生
                     Instantiate(BreakEffect, transform.position, transform.rotation);
+                    cmr.GetSetVibLevel = 0.2f;
+                    cmr.GetSetisViberation = true;
                 }
             }
             else if (gameObject.name == ("LeftUpperArm"))//左上腕
@@ -164,6 +182,8 @@ public class HitCheck : MonoBehaviour
                     //breakエフェクト再生
                     Instantiate(BreakEffect, transform.position, transform.rotation);
 
+                    cmr.GetSetVibLevel = 0.2f;
+                    cmr.GetSetisViberation = true;
                 }
             }
             else if (gameObject.name == ("LeftArm"))//左腕
@@ -175,6 +195,8 @@ public class HitCheck : MonoBehaviour
                     audiosource.Play();
                     //breakエフェクト再生
                     Instantiate(BreakEffect, transform.position, transform.rotation);
+                    cmr.GetSetVibLevel = 0.2f;
+                    cmr.GetSetisViberation = true;
                 }
             }
             else if (gameObject.name == ("LeftHand"))//左手
@@ -186,6 +208,8 @@ public class HitCheck : MonoBehaviour
                     audiosource.Play();
                     //breakエフェクト再生
                     Instantiate(BreakEffect, transform.position, transform.rotation);
+                    cmr.GetSetVibLevel = 0.2f;
+                    cmr.GetSetisViberation = true;
                 }
             }
             else if (gameObject.name == ("RightUpperArm"))//右上腕
@@ -197,6 +221,8 @@ public class HitCheck : MonoBehaviour
                     audiosource.Play();
                     //breakエフェクト再生
                     Instantiate(BreakEffect, transform.position, transform.rotation);
+                    cmr.GetSetVibLevel = 0.2f;
+                    cmr.GetSetisViberation = true;
                 }
             }
             else if (gameObject.name == ("RightArm"))//右腕
@@ -208,6 +234,8 @@ public class HitCheck : MonoBehaviour
                     audiosource.Play();
                     //breakエフェクト再生
                     Instantiate(BreakEffect, transform.position, transform.rotation);
+                    cmr.GetSetVibLevel = 0.2f;
+                    cmr.GetSetisViberation = true;
                 }
             }
             else if (gameObject.name == ("RightHand"))//右手
@@ -219,6 +247,8 @@ public class HitCheck : MonoBehaviour
                     audiosource.Play();
                     //breakエフェクト再生
                     Instantiate(BreakEffect, transform.position, transform.rotation);
+                    cmr.GetSetVibLevel = 0.2f;
+                    cmr.GetSetisViberation = true;
                 }
             }
             else if (gameObject.name == ("Head"))//頭部
@@ -230,6 +260,8 @@ public class HitCheck : MonoBehaviour
                     audiosource.Play();
                     //breakエフェクト再生
                     Instantiate(BreakEffect, transform.position, transform.rotation);
+                    cmr.GetSetVibLevel = 0.2f;
+                    cmr.GetSetisViberation = true;
                 }
             }
         }

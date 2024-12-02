@@ -5,6 +5,7 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class camera : MonoBehaviour
 {
@@ -28,8 +29,9 @@ public class camera : MonoBehaviour
     [SerializeField,Header("å¯â éûä‘(ïb)")]
     int EndTime = 10;
 
-    ShakeByPerlinNoise PerlinNoise;
 
+    float vibLevel = 0.7f;//óhÇÍÇÃëÂÇ´Ç≥
+    bool isVib = false;
 
 bigSmall BigSmall;
 
@@ -50,8 +52,6 @@ bigSmall BigSmall;
         MaxMoveZ += C_posZ;
         MaxMoveY += C_posY;
         c_transform= GetComponent<Transform>();
-        PerlinNoise = GetComponent<ShakeByPerlinNoise>();
-        PerlinNoise.StartShake(3, 50, 30);
     }
     // Update is called once per frame
     void Update()
@@ -99,9 +99,16 @@ bigSmall BigSmall;
         //ÉvÉåÉCíÜÇÃç¿ïW
         PlayMode_pos = new Vector3(target.transform.position.x, target.transform.position.y + C_posY, C_posZ);
 
+        if(isVib)
+        {
+            c_transform.position = PlayMode_pos+new Vector3(Randomvibration(vibLevel),Randomvibration(vibLevel), Randomvibration(vibLevel));
 
-        c_transform.position = PlayMode_pos;
+        }
+        else
+        {
+            c_transform.position = PlayMode_pos;
 
+        }
         c_transform.rotation = PlayMode_rot;
 
     }
@@ -111,6 +118,19 @@ bigSmall BigSmall;
         float vibration = 0;
         vibration = UnityEngine.Random.Range(-strength, strength);
 
+        //å≥ÇÃç¿ïWÇ…êUìÆó Çï‘ÇµÇƒë´Ç∑
         return vibration;
+    }
+
+    public bool GetSetisViberation
+    {
+        get { return isVib; } 
+        set { isVib = value; }
+    }
+
+    public float GetSetVibLevel
+    {
+        get { return vibLevel; }
+        set { vibLevel = value; }
     }
 }
