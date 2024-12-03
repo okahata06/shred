@@ -20,12 +20,14 @@ public class EffectDestory : MonoBehaviour
 
         if (CompareTag("BulletEffect") && Count >= 0.3)
         {
-            gameObject.SetActive(false);
+            Destroy(gameObject);
+            //gameObject.SetActive(false);
         }
 
         if (Count >= 2)
         {
-            gameObject.SetActive(false);
+            Destroy(gameObject);
+            //gameObject.SetActive(false);
         }
     }
 }

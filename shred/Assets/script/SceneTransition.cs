@@ -18,7 +18,22 @@ public class SceneTransition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     
+        if (SceneManager.GetActiveScene().name == "GoalScene")
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene("main");
+            }
+        }
+        else if (SceneManager.GetActiveScene().name == "NGScene")
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene("main");
+
+            }
+        }
+
 
     }
 
@@ -54,17 +69,7 @@ public class SceneTransition : MonoBehaviour
 
         }
     }
-    private void OnTriggerExit(Collider other)
-    {
-        if (gameObject.tag == "NG")
-        {
-
-        }
-        else if (gameObject.tag == "Goal")
-        {
-        }
    
-    }
     void ChangeScene()
     {
         if (gameObject.tag == "Goal")
@@ -77,7 +82,6 @@ public class SceneTransition : MonoBehaviour
             SceneManager.LoadScene("NGScene");
 
         }
-
     }
 
 
