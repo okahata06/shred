@@ -69,7 +69,13 @@ public class Generate : MonoBehaviour
         //プレイヤーの座標取得
         P_t = Player.GetComponent<Transform>();
         P_posY = (int)P_t.position.y;
-        P_posYbf = P_posY;
+        
+        
+        if(P_posYbf >= P_posY || Mathf.Abs(P_posYbf - P_posY) >= 10)
+        {
+            P_posYbf = P_posY;
+
+        }
 
         //プレイヤーのいる地点からステージの終了地点を決める
         StageLength = P_posY + StageLength;
@@ -164,7 +170,11 @@ public class Generate : MonoBehaviour
 
         if (time >= bfTime)
         {
-            P_posYbf = P_posY;
+            if (P_posYbf >= P_posY|| Mathf.Abs(P_posYbf - P_posY) >=10)
+            {
+                P_posYbf = P_posY;
+
+            }
             bfTime += 0.5f;
         }
 

@@ -826,7 +826,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnergyGage: {fileID: 812214129}
   bust_power: 0.2
-  Energy_Max: 1000
+  Energy_Max: 100
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

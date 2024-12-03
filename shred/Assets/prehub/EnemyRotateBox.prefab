@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 8439881511746865321}
   - component: {fileID: 3748721709412327356}
   - component: {fileID: 2588779906712122775}
+  - component: {fileID: -5748152975596479771}
   m_Layer: 0
   m_Name: EnemyRotateBox
   m_TagString: Untagged
@@ -165,4 +166,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 362c3e362b429d7469e4a6126cbacb99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 0}
   Bullet: {fileID: 5669985133158794519, guid: 756ba6c46d5fb1d468961a0bf903681c, type: 3}
+--- !u!65 &-5748152975596479771
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2627233413937007367}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
