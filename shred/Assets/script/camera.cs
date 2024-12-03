@@ -35,6 +35,7 @@ public class camera : MonoBehaviour
 
     float ChangeTime = 0;
     bool isTitle = true;
+    bool isChange = false;
     bool isPlay = false;
 
     bigSmall BigSmall;
@@ -63,20 +64,36 @@ public class camera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //タイトル用コード
         if (isTitle)
         {
+            //タイトル中の座標と方向
             gameObject.transform.position = Title_pos;
             gameObject.transform.rotation = title_rot;
-
+            //キーを押して遷移コードへ移動
             if (Input.GetKey(KeyCode.Z))
             {
-                //isTitle = false;
-                transform.position = Vector3.Lerp(Title_pos, PlayMode_pos, ChangeTime);
-                transform.rotation = Quaternion.Lerp(title_rot, PlayMode_rot, ChangeTime);
-                ChangeTime += 0.01f;
-                
+                isTitle = false;
+                isChange = true;
             }
         }
+        //遷移コード
+        else if(isChange)
+        {
+            //座標、方向の移動
+            transform.position = Vector3.Lerp(Title_pos, PlayMode_pos, ChangeTime);
+            transform.rotation = Quaternion.Lerp(title_rot, PlayMode_rot, ChangeTime);
+            //遷移速度
+            ChangeTime += 0.003f;
+            
+            //移動が終わったらプレイ中のコードへ移動
+            if(ChangeTime>=1)
+            {
+                isChange = false;
+                isPlay = true;
+            }
+        }
+        //プレイ中コード
         else if (isPlay)
         {
             //ｚ軸縮小
