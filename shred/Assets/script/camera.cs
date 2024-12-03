@@ -45,7 +45,6 @@ public class camera : MonoBehaviour
     Vector3 Title_pos;
     Quaternion title_rot = Quaternion.Euler(90, 180, 0);
 
-    Vector3 T_P_Change;
     //ÉQÅ[ÉÄíÜÇÃÉJÉÅÉâç¿ïW
     Vector3 PlayMode_pos;
     Quaternion PlayMode_rot = Quaternion.Euler(25, 180, 0);
@@ -72,7 +71,7 @@ public class camera : MonoBehaviour
             if (Input.GetKey(KeyCode.Z))
             {
                 //isTitle = false;
-                transform.position = Vector3.Lerp(Title_pos, T_P_Change, ChangeTime);
+                transform.position = Vector3.Lerp(Title_pos, PlayMode_pos, ChangeTime);
                 transform.rotation = Quaternion.Lerp(title_rot, PlayMode_rot, ChangeTime);
                 ChangeTime += 0.01f;
                 
