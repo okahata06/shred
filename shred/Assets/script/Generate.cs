@@ -157,7 +157,6 @@ public class Generate : MonoBehaviour
         }
 
 
-
         //タグで釘を検索（おそらく最も古いもの）
         c_nail = GameObject.FindGameObjectWithTag("Nail");
         //釘の座標を保存(Yがほしい)
@@ -204,7 +203,7 @@ public class Generate : MonoBehaviour
         {
            　GameObject EnemyBox = Instantiate(Enemy, new Vector3(left, P_posY - distance, 0), Nailrot);
         }
-        if(side==1)
+        if (side==1)
         {
             GameObject EnemyBox =Instantiate(Enemy, new Vector3(right, P_posY - distance, 0), Nailrot);
         }
@@ -235,11 +234,7 @@ public class Generate : MonoBehaviour
         GameObject WallDown = Instantiate(Wall_LRDS, new Vector3((left + right) / 2, -StageLength, 0), Nrot);
         WallDown.transform.localScale = new Vector3(Mathf.Abs(left) + Mathf.Abs(right), 1, depth);
 
-        //斜め
-        GameObject WallSlice = Instantiate(Wall_LRDS, new Vector3((left + right) / 2, P_posY, 10), Nrot);
-        WallSlice.transform.localScale=new Vector3((left + right) / 2, 10, 1);
-        WallSlice.transform.rotation= new Quaternion(60, 60, 0, 0);///////////////////////////////
-
+        
         //前後
         Instantiate(Wall_BA, new Vector3((left + right) / 2, -StageLength / 2, -1.5f), Nrot);
         Instantiate(Wall_BA, new Vector3((left + right) / 2, -StageLength / 2, 1.5f), Nrot);

@@ -17,10 +17,14 @@ public class HitCheck : MonoBehaviour
 
 
     bool E_BulletHit;
-    int fastbreak = 10;//第三関節
-    int secondbreak = 20;//第二関節
-    int thredbreak = 30;//第一関節
+    int fastbreak = 8;//第三関節
+    int secondbreak = 15;//第二関節
+    int thredbreak = 25;//第一関節
     int Hit_C = 0;
+    //部位破損時の振動レベル
+    float VibLevel_Neil = 0.25f;
+    float VibLevel_Bullet = 0.4f;
+
 
     //エフェクト取得用
     EffectManager EM;
@@ -97,171 +101,91 @@ public class HitCheck : MonoBehaviour
             {
                 if (Hit_C == thredbreak)
                 {
-                    transform.localScale = Vector3.zero;
-                    audiosource.clip = BreakSE;
-                    audiosource.Play();
-                    //breakエフェクト再生
-                    Instantiate(BreakEffect, transform.position, transform.rotation);
-                    cmr.GetSetVibLevel = 0.2f;
-                    cmr.GetSetisViberation = true;
-
+                    Hit_Nail();
                 }
             }
             else if (gameObject.name == ("LeftCalf"))//左ふくらはぎ
             {
                 if (Hit_C == secondbreak)
                 {
-                    transform.localScale = Vector3.zero;
-                    audiosource.clip = BreakSE;
-                    audiosource.Play();
-                    //breakエフェクト再生
-                    Instantiate(BreakEffect, transform.position, transform.rotation);
-                    cmr.GetSetVibLevel = 0.2f;
-                    cmr.GetSetisViberation = true;
+                    Hit_Nail();
                 }
             }
             else if (gameObject.name == ("LeftFoot"))//左足先
             {
                 if (Hit_C == fastbreak)
                 {
-                    transform.localScale = Vector3.zero;
-                    audiosource.clip = BreakSE;
-                    audiosource.Play();
-                    //breakエフェクト再生
-                    Instantiate(BreakEffect, transform.position, transform.rotation);
-                    cmr.GetSetVibLevel = 0.2f;
-                    cmr.GetSetisViberation = true;
+                    Hit_Nail();
                 }
             }
             else if (gameObject.name == ("RightLeg"))//右太もも
             {
                 if (Hit_C == thredbreak)
                 {
-                    transform.localScale = Vector3.zero;
-                    audiosource.clip = BreakSE;
-                    audiosource.Play();
-                    //breakエフェクト再生
-                    Instantiate(BreakEffect, transform.position, transform.rotation);
-                    cmr.GetSetVibLevel = 0.2f;
-                    cmr.GetSetisViberation = true;
+                    Hit_Nail();
                 }
             }
             else if (gameObject.name == ("RightCalf"))//右ふくらはぎ
             {
                 if (Hit_C == secondbreak)
                 {
-                    transform.localScale = Vector3.zero;
-                    audiosource.clip = BreakSE;
-                    audiosource.Play();
-                    //breakエフェクト再生
-                    Instantiate(BreakEffect, transform.position, transform.rotation);
-                    cmr.GetSetVibLevel = 0.2f;
-                    cmr.GetSetisViberation = true;
+                    Hit_Nail();
                 }
             }
             else if (gameObject.name == ("RightFoot"))//右足先
             {
                 if (Hit_C == fastbreak)
                 {
-                    transform.localScale = Vector3.zero;
-                    audiosource.clip = BreakSE;
-                    audiosource.Play();
-                    //breakエフェクト再生
-                    Instantiate(BreakEffect, transform.position, transform.rotation);
-                    cmr.GetSetVibLevel = 0.2f;
-                    cmr.GetSetisViberation = true;
+                    Hit_Nail();
                 }
             }
             else if (gameObject.name == ("LeftUpperArm"))//左上腕
             {
                 if (Hit_C == thredbreak)
                 {
-                    transform.localScale = Vector3.zero;
-                    audiosource.clip = BreakSE;
-                    audiosource.Play();
-                    //breakエフェクト再生
-                    Instantiate(BreakEffect, transform.position, transform.rotation);
-
-                    cmr.GetSetVibLevel = 0.2f;
-                    cmr.GetSetisViberation = true;
+                    Hit_Nail();
                 }
             }
             else if (gameObject.name == ("LeftArm"))//左腕
             {
                 if (Hit_C == secondbreak)
                 {
-                    transform.localScale = Vector3.zero;
-                    audiosource.clip = BreakSE;
-                    audiosource.Play();
-                    //breakエフェクト再生
-                    Instantiate(BreakEffect, transform.position, transform.rotation);
-                    cmr.GetSetVibLevel = 0.2f;
-                    cmr.GetSetisViberation = true;
+                    Hit_Nail();
                 }
             }
             else if (gameObject.name == ("LeftHand"))//左手
             {
                 if (Hit_C == fastbreak)
                 {
-                    transform.localScale = Vector3.zero;
-                    audiosource.clip = BreakSE;
-                    audiosource.Play();
-                    //breakエフェクト再生
-                    Instantiate(BreakEffect, transform.position, transform.rotation);
-                    cmr.GetSetVibLevel = 0.2f;
-                    cmr.GetSetisViberation = true;
+                    Hit_Nail();
                 }
             }
             else if (gameObject.name == ("RightUpperArm"))//右上腕
             {
                 if (Hit_C == thredbreak)
                 {
-                    transform.localScale = Vector3.zero;
-                    audiosource.clip = BreakSE;
-                    audiosource.Play();
-                    //breakエフェクト再生
-                    Instantiate(BreakEffect, transform.position, transform.rotation);
-                    cmr.GetSetVibLevel = 0.2f;
-                    cmr.GetSetisViberation = true;
+                    Hit_Nail();
                 }
             }
             else if (gameObject.name == ("RightArm"))//右腕
             {
                 if (Hit_C == secondbreak)
                 {
-                    transform.localScale = Vector3.zero;
-                    audiosource.clip = BreakSE;
-                    audiosource.Play();
-                    //breakエフェクト再生
-                    Instantiate(BreakEffect, transform.position, transform.rotation);
-                    cmr.GetSetVibLevel = 0.2f;
-                    cmr.GetSetisViberation = true;
+                    Hit_Nail();
                 }
             }
             else if (gameObject.name == ("RightHand"))//右手
             {
                 if (Hit_C == fastbreak)
                 {
-                    transform.localScale = Vector3.zero;
-                    audiosource.clip = BreakSE;
-                    audiosource.Play();
-                    //breakエフェクト再生
-                    Instantiate(BreakEffect, transform.position, transform.rotation);
-                    cmr.GetSetVibLevel = 0.2f;
-                    cmr.GetSetisViberation = true;
+                    Hit_Nail();
                 }
             }
             else if (gameObject.name == ("Head"))//頭部
             {
                 if (Hit_C == secondbreak)
                 {
-                    transform.localScale = Vector3.zero;
-                    audiosource.clip = BreakSE;
-                    audiosource.Play();
-                    //breakエフェクト再生
-                    Instantiate(BreakEffect, transform.position, transform.rotation);
-                    cmr.GetSetVibLevel = 0.2f;
-                    cmr.GetSetisViberation = true;
+                    Hit_Nail();        
                 }
             }
         }
@@ -278,6 +202,7 @@ public class HitCheck : MonoBehaviour
             //SE再生
             audiosource.Play();
 
+
             Hit_C++;
             if (col.gameObject.tag == ("EnemyBullet"))
             { EnemyBullet.E_FastHitGetSet = true; }
@@ -286,149 +211,127 @@ public class HitCheck : MonoBehaviour
             {
                 if (Hit_C == thredbreak)
                 {
-                    transform.localScale = Vector3.zero;
-                    audiosource.clip = BreakSE;
-                    audiosource.Play();
-                    //breakエフェクト再生
-                    Instantiate(BreakEffect, transform.position, transform.rotation);
-
+                    Hit_Bullet();
                 }
             }
             else if (gameObject.name == ("LeftCalf"))//左ふくらはぎ
             {
                 if (Hit_C == secondbreak)
                 {
-                    transform.localScale = Vector3.zero;
-                    audiosource.clip = BreakSE;
-                    audiosource.Play();
-                    //breakエフェクト再生
-                    Instantiate(BreakEffect, transform.position, transform.rotation);
+                    Hit_Bullet();
                 }
             }
             else if (gameObject.name == ("LeftFoot"))//左足先
             {
                 if (Hit_C == fastbreak)
                 {
-                    transform.localScale = Vector3.zero;
-                    audiosource.clip = BreakSE;
-                    audiosource.Play();
-                    //breakエフェクト再生
-                    Instantiate(BreakEffect, transform.position, transform.rotation);
+                    Hit_Bullet();
                 }
             }
             else if (gameObject.name == ("RightLeg"))//右太もも
             {
                 if (Hit_C == thredbreak)
                 {
-                    transform.localScale = Vector3.zero;
-                    audiosource.clip = BreakSE;
-                    audiosource.Play();
-                    //breakエフェクト再生
-                    Instantiate(BreakEffect, transform.position, transform.rotation);
+                    Hit_Bullet();
                 }
             }
             else if (gameObject.name == ("RightCalf"))//右ふくらはぎ
             {
                 if (Hit_C == secondbreak)
                 {
-                    transform.localScale = Vector3.zero;
-                    audiosource.clip = BreakSE;
-                    audiosource.Play();
-                    //breakエフェクト再生
-                    Instantiate(BreakEffect, transform.position, transform.rotation);
+                    Hit_Bullet();
                 }
             }
             else if (gameObject.name == ("RightFoot"))//右足先
             {
                 if (Hit_C == fastbreak)
                 {
-                    transform.localScale = Vector3.zero;
-                    audiosource.clip = BreakSE;
-                    audiosource.Play();
-                    //breakエフェクト再生
-                    Instantiate(BreakEffect, transform.position, transform.rotation);
+                    Hit_Bullet();
                 }
             }
             else if (gameObject.name == ("LeftUpperArm"))//左上腕
             {
                 if (Hit_C == thredbreak)
                 {
-                    transform.localScale = Vector3.zero;
-                    audiosource.clip = BreakSE;
-                    audiosource.Play();
-                    //breakエフェクト再生
-                    Instantiate(BreakEffect, transform.position, transform.rotation);
-
+                    Hit_Bullet();
                 }
             }
             else if (gameObject.name == ("LeftArm"))//左腕
             {
                 if (Hit_C == secondbreak)
                 {
-                    transform.localScale = Vector3.zero;
-                    audiosource.clip = BreakSE;
-                    audiosource.Play();
-                    //breakエフェクト再生
-                    Instantiate(BreakEffect, transform.position, transform.rotation);
+                    Hit_Bullet();
                 }
             }
             else if (gameObject.name == ("LeftHand"))//左手
             {
                 if (Hit_C == fastbreak)
                 {
-                    transform.localScale = Vector3.zero;
-                    audiosource.clip = BreakSE;
-                    audiosource.Play();
-                    //breakエフェクト再生
-                    Instantiate(BreakEffect, transform.position, transform.rotation);
+                    Hit_Bullet();
                 }
             }
             else if (gameObject.name == ("RightUpperArm"))//右上腕
             {
                 if (Hit_C == thredbreak)
                 {
-                    transform.localScale = Vector3.zero;
-                    audiosource.clip = BreakSE;
-                    audiosource.Play();
-                    //breakエフェクト再生
-                    Instantiate(BreakEffect, transform.position, transform.rotation);
+                    Hit_Bullet();
                 }
             }
             else if (gameObject.name == ("RightArm"))//右腕
             {
                 if (Hit_C == secondbreak)
                 {
-                    transform.localScale = Vector3.zero;
-                    audiosource.clip = BreakSE;
-                    audiosource.Play();
-                    //breakエフェクト再生
-                    Instantiate(BreakEffect, transform.position, transform.rotation);
+                    Hit_Bullet();
                 }
             }
             else if (gameObject.name == ("RightHand"))//右手
             {
                 if (Hit_C == fastbreak)
                 {
-                    transform.localScale = Vector3.zero;
-                    audiosource.clip = BreakSE;
-                    audiosource.Play();
-                    //breakエフェクト再生
-                    Instantiate(BreakEffect, transform.position, transform.rotation);
+                    Hit_Bullet();
                 }
             }
             else if (gameObject.name == ("Head"))//頭部
             {
                 if (Hit_C == secondbreak)
                 {
-                    transform.localScale = Vector3.zero;
-                    audiosource.clip = BreakSE;
-                    audiosource.Play();
-                    //breakエフェクト再生
-                    Instantiate(BreakEffect, transform.position, transform.rotation);
+                    Hit_Bullet();
                 }
             }
 
 
         }
+    }
+    void Hit_Nail()
+    {
+        transform.localScale = Vector3.zero;
+        audiosource.clip = BreakSE;
+        audiosource.Play();
+        //breakエフェクト再生
+        Instantiate(BreakEffect, transform.position, transform.rotation);
+        //カメラの振動起動
+        cmr.GetSetVibLevel = VibLevel_Neil;
+        cmr.GetSetisViberation = true;
+        //一定時間後振動停止
+        Invoke("isVibrationFalse", 1.3f);
+    }
+    void Hit_Bullet()
+    {
+        transform.localScale = Vector3.zero;
+        audiosource.clip = BreakSE;
+        audiosource.Play();
+        //breakエフェクト再生
+        Instantiate(BreakEffect, transform.position, transform.rotation);
+        //カメラの振動起動
+        cmr.GetSetVibLevel = VibLevel_Bullet;
+        cmr.GetSetisViberation = true;
+        //一定時間後振動停止
+        Invoke("isVibrationFalse", 2);
+
+    }
+
+    bool isVibrationFalse()
+    {
+        return cmr.GetSetisViberation = false;
     }
 }
