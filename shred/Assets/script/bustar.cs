@@ -23,9 +23,12 @@ public class bustar : MonoBehaviour
     Vector3 set;
     Vector3 bust;
 
+    camera CMR;
+
     // Start is called before the first frame update
     void Start()
     {
+        CMR=GameObject.FindGameObjectWithTag("MainCamera").GetComponent<camera>();
         //初期エネルギーを最大値に
         Energy_Remaining = Energy_Max;
         //ゲージUIの最大値
@@ -46,6 +49,9 @@ public class bustar : MonoBehaviour
         { set.x = 5; }
         else
         {
+            if(!CMR.GetSetTitleEnd)
+            { set.y = 0; }
+            else { set.y=bust_power; }
             set.x = 0;
         }
         //ベクトルの正規化
@@ -57,6 +63,7 @@ public class bustar : MonoBehaviour
             //ベクトル加算
             rig.velocity += bust;
             //エネルギー減少
+            if (set.y != 0)
             Energy_Remaining -= bust_power;
 
             //残量がマイナスなら０にする

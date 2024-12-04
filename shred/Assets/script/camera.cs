@@ -37,6 +37,8 @@ public class camera : MonoBehaviour
     bool isTitle = true;
     bool isChange = false;
     bool isPlay = false;
+    bool TitleEnd = false;
+
 
     bigSmall BigSmall;
 
@@ -71,7 +73,7 @@ public class camera : MonoBehaviour
             gameObject.transform.position = Title_pos;
             gameObject.transform.rotation = title_rot;
             //キーを押して遷移コードへ移動
-            if (Input.GetKey(KeyCode.Z))
+            if (TitleEnd)
             {
                 PlayMode_pos = new Vector3(target.transform.position.x, target.transform.position.y + C_posY, C_posZ);
 
@@ -177,5 +179,10 @@ public class camera : MonoBehaviour
     {
         get { return vibLevel; }
         set { vibLevel = value; }
+    }
+    public bool GetSetTitleEnd
+    {
+        get { return TitleEnd; }
+        set { TitleEnd = value; }
     }
 }

@@ -20,6 +20,10 @@ public class Generate : MonoBehaviour
     bool Nail_LR = false;//釘の召喚をばらけさせるため。右がfalse
     bool Goal_Gen = false;
 
+    [SerializeField, Header("カメラ")]
+    GameObject CAMERA;
+    camera CMR;
+
     [SerializeField, Header("プレイヤー")]
     GameObject Player;
     Transform P_t;
@@ -62,10 +66,11 @@ public class Generate : MonoBehaviour
     //釘インスタンスの回転
     Quaternion Nailrot = Quaternion.Euler(90, 0, 0);
 
+
     // Start is called before the first frame update
     void Start()
     {
-
+        CMR=CAMERA.GetComponent<camera> (); 
         //プレイヤーの座標取得
         P_t = Player.GetComponent<Transform>();
         P_posY = (int)P_t.position.y;
@@ -105,7 +110,8 @@ public class Generate : MonoBehaviour
         P_posY = (int)Player.transform.position.y;
         time = time + Time.deltaTime;
         //インスタンス条件
-        if (Nail_t.position.y - P_t.position.y <= distance &&//釘との距離で判定
+        if (CMR.GetSetTitleEnd&&
+            Nail_t.position.y - P_t.position.y <= distance &&//釘との距離で判定
             P_t.position.y>=-(StageLength-distance)&&
                 NailTime <= time &&//一定間隔のインターバル
                 P_posYbf > P_posY)//落下していないときは生成しない
