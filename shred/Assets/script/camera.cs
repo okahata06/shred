@@ -73,6 +73,8 @@ public class camera : MonoBehaviour
             //キーを押して遷移コードへ移動
             if (Input.GetKey(KeyCode.Z))
             {
+                PlayMode_pos = new Vector3(target.transform.position.x, target.transform.position.y + C_posY, C_posZ);
+
                 isTitle = false;
                 isChange = true;
             }
