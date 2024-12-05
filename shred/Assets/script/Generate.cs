@@ -15,6 +15,7 @@ public class Generate : MonoBehaviour
     float bfTime = 0;//player座標チェック用
     float NailTime = 0.5f;//釘召喚用
     float Goal_posX = 0;
+    float BlockTime=0;
 
     bool NailCheck;
     bool Nail_LR = false;//釘の召喚をばらけさせるため。右がfalse
@@ -32,6 +33,8 @@ public class Generate : MonoBehaviour
     [SerializeField, Header("釘")]
     GameObject Nail;
     Transform Nail_t;
+    [SerializeField, Header("タイトルブロック")]
+    GameObject Block;
     [SerializeField, Header("アイテム")]
     GameObject bigSmall;
     [SerializeField]
@@ -105,13 +108,19 @@ public class Generate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         //プレイヤーのy座標取得
         P_posY = (int)Player.transform.position.y;
         time = time + Time.deltaTime;
+        
         //インスタンス条件
-        if (CMR.GetSetTitleEnd&&
-            Nail_t.position.y - P_t.position.y <= distance &&//釘との距離で判定
+        //タイトル中
+        if(!CMR.GetSetTitleEnd&&BlockTime+2<=time)
+        {
+            BlockTime += 2;
+            BlockGenerate();
+        }
+        //プレイ中
+        else if( Nail_t.position.y - P_t.position.y <= distance &&//釘との距離で判定
             P_t.position.y>=-(StageLength-distance)&&
                 NailTime <= time &&//一定間隔のインターバル
                 P_posYbf > P_posY)//落下していないときは生成しない
@@ -183,10 +192,38 @@ public class Generate : MonoBehaviour
             }
             bfTime += 0.5f;
         }
-
+        Debug.Log(Random.Range(0, 3));
     }
 
     //---------------------------インスタンス-------------------------------//
+
+    //タイトルブロックのインスタンス
+    void BlockGenerate()
+    {
+        GameObject block = Instantiate(Block, new Vector3(Random.Range(-6, 6), Block.transform.position.y, Block.transform.position.z), Nrot);
+        switch (Random.Range(0, 4))
+        {
+            case 0:
+                block.transform.localScale /= 4;
+
+                break;
+            case 1:
+                block.transform.localScale /= 3;
+
+                break;
+            case 2:
+                block.transform.localScale /= 2;
+
+                break;
+            default:
+                break;
+        }
+
+
+        if (Random.Range(0,2)==1)
+        {
+        }
+    }
 
     //釘のインスタンス
     void NailGenerate()

@@ -7,7 +7,7 @@ public class rean : MonoBehaviour
     float posY;
     float count=0;
     float move = 0.05f;
-    float MAXmove = 0.2f;
+    float MAXmove = 0.3f;
     bool up=true;
 
     Vector3 pos;
@@ -58,6 +58,10 @@ public class rean : MonoBehaviour
             {
                 col.rigidbody.velocity = Vector3.forward * 2;
             }
+        }
+        else
+        {
+            col.rigidbody.velocity = Vector3.forward * 2;
         }
     }
 }

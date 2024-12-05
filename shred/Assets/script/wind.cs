@@ -19,9 +19,10 @@ public class wind : MonoBehaviour
 
     Transform P_t;
     Rigidbody rig;
-
+    camera CMR;
     private void Start()
     {
+        CMR=GameObject.FindGameObjectWithTag("MainCamera").GetComponent<camera>();
         velocity = Vector3.zero;
         P_t=Player.GetComponent<Transform>();    
     }
@@ -33,7 +34,8 @@ public class wind : MonoBehaviour
     }
     void OnTriggerStay(Collider col)
     {
-        
+        if (!CMR.GetSetTitleEnd)
+            return;
         Rigidbody rig;
         rig = col.GetComponent<Rigidbody>();
 
@@ -43,11 +45,11 @@ public class wind : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         { velocity = Left; }
-        if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow))
         { velocity = Right; }
-        if (Input.GetKey(KeyCode.UpArrow))
+        else if (Input.GetKey(KeyCode.UpArrow))
         { velocity = Up; }
-        if (Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.DownArrow))
         { velocity = Down; }
 
         // ‘Š‘Î‘¬“xŒvŽZ

@@ -18,7 +18,12 @@ public class SceneTransition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "GoalScene")
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("main");
+
+        }
+        else if (SceneManager.GetActiveScene().name == "GoalScene")
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
