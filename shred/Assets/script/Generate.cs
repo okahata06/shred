@@ -253,7 +253,8 @@ public class Generate : MonoBehaviour
         
         //‘OŒã
         Instantiate(Wall_BA, new Vector3((left + right) / 2, -StageLength / 2, -1.5f), Nrot);
-        Instantiate(Wall_BA, new Vector3((left + right) / 2, -StageLength / 2, 1.5f), Nrot);
+        GameObject flont= Instantiate(Wall_BA, new Vector3((left + right) / 2, -StageLength / 2, 1.5f), Nrot);
+        flont.transform.localScale = new Vector3(flont.transform.localScale.x, flont.transform.localScale.y + 30, flont.transform.localScale.z);
     }
 
     void ItemGenerate()

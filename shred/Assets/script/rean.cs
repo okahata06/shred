@@ -4,36 +4,60 @@ using UnityEngine;
 
 public class rean : MonoBehaviour
 {
-
+    float posY;
     float count=0;
-    float move = 0.01f;
-    float MAXmove = 1;
+    float move = 0.05f;
+    float MAXmove = 0.2f;
+    bool up=true;
 
-    bool up = true;
     Vector3 pos;
+    Vector3 MovePos;
 
+    camera CMR;
     // Start is called before the first frame update
     void Start()
     {
-        pos = transform.position;
-        MAXmove += pos.y;
+        CMR=GameObject.FindGameObjectWithTag("MainCamera").GetComponent<camera>();
+        pos = new Vector3(transform.position.x,transform.position.y,transform.position.z);  
+    posY= transform.position.y;
+        MAXmove += posY;
     }
 
     // Update is called once per frame
     void Update()
     {
-        count++;
-        if(count>=2&&up)
+
+        count += Time.deltaTime;
+        if( up&&count>=2)
         {
             pos.y += move;
-            if(pos.y==MAXmove)
+        if(pos.y >= MAXmove) { up = false; count = 0; }
+        }
+        else if(!up)
+        {
+            pos.y -= move;
+            if (pos.y <= posY) { up = true; }
+
+        }
+
+
+        transform.position= pos;
+    }
+
+    private void OnCollisionStay(Collision col)
+    {
+        //タイトル中、プレイヤー以外を等しく移動させる
+
+        if (!CMR.GetSetTitleEnd)//タイトル中かどうか
+        {
+            if(col.gameObject.CompareTag("Player"))
+            {//プレイヤータグは移動しない
+            col.rigidbody.velocity = Vector3.zero;
+            }
+            else
             {
-                count = 0;
-                up = false;
+                col.rigidbody.velocity = Vector3.forward * 2;
             }
         }
-        else if(pos.y<=MAXmove)
-
-        transform.position = pos;
     }
 }
