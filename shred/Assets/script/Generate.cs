@@ -15,7 +15,7 @@ public class Generate : MonoBehaviour
     float bfTime = 0;//player座標チェック用
     float NailTime = 0.5f;//釘召喚用
     float Goal_posX = 0;
-    float BlockTime=0;
+    float BlockTime = 0;
 
     bool NailCheck;
     bool Nail_LR = false;//釘の召喚をばらけさせるため。右がfalse
@@ -57,9 +57,11 @@ public class Generate : MonoBehaviour
     float left = -5;
     [SerializeField]
     float right = 5;
-    
+
     float senter = 0;
     float depth = -2;
+
+    bool stage_in = false;
 
     GameObject c_nail;
 
@@ -73,13 +75,13 @@ public class Generate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CMR=CAMERA.GetComponent<camera> (); 
+        CMR = CAMERA.GetComponent<camera>();
         //プレイヤーの座標取得
         P_t = Player.GetComponent<Transform>();
         P_posY = (int)P_t.position.y;
-        
-        
-        if(P_posYbf >= P_posY || Mathf.Abs(P_posYbf - P_posY) >= 10)
+
+
+        if (P_posYbf >= P_posY || Mathf.Abs(P_posYbf - P_posY) >= 10)
         {
             P_posYbf = P_posY;
 
@@ -98,9 +100,9 @@ public class Generate : MonoBehaviour
         //Wallの座標取得
         Wall_LRDS_T = Wall_LRDS.GetComponent<Transform>();
         Wall_LRDS_T.localScale = new Vector3(1, StageLength, 2.5f);
-        
-        Wall_BA_T=Wall_BA.GetComponent<Transform>();
-        Wall_BA_T.localScale = new Vector3(Mathf.Abs(left) + Mathf.Abs(right), StageLength,0.2f);
+
+        Wall_BA_T = Wall_BA.GetComponent<Transform>();
+        Wall_BA_T.localScale = new Vector3(Mathf.Abs(left) + Mathf.Abs(right), StageLength, 0.2f);
         WallGenerate();
 
     }
@@ -111,17 +113,22 @@ public class Generate : MonoBehaviour
         //プレイヤーのy座標取得
         P_posY = (int)Player.transform.position.y;
         time = time + Time.deltaTime;
-        
+
+        if (P_posY <= -StageLength + (StageLength - 3))
+        {
+            stage_in = true;
+        }
+
         //インスタンス条件
         //タイトル中
-        if(!CMR.GetSetTitleEnd&&BlockTime+2<=time)
+        if (!CMR.GetSetTitleEnd && BlockTime + 2 <= time)
         {
             BlockTime += 2;
             BlockGenerate();
         }
         //プレイ中
-        else if( Nail_t.position.y - P_t.position.y <= distance &&//釘との距離で判定
-            P_t.position.y>=-(StageLength-distance)&&
+        else if (Nail_t.position.y - P_t.position.y <= distance &&//釘との距離で判定
+            P_t.position.y >= -(StageLength - distance) &&
                 NailTime <= time &&//一定間隔のインターバル
                 P_posYbf > P_posY)//落下していないときは生成しない
         {
@@ -170,11 +177,11 @@ public class Generate : MonoBehaviour
         }
 
         //ゴールの生成
-        if(P_t.position.y <= -(StageLength - distance)&&!Goal_Gen)
+        if (P_t.position.y <= -(StageLength - distance) && !Goal_Gen)
         {
             Debug.Log("aa");
             GoalAreaGenerate();
-            Goal_Gen=true;
+            Goal_Gen = true;
         }
 
 
@@ -185,7 +192,7 @@ public class Generate : MonoBehaviour
 
         if (time >= bfTime)
         {
-            if (P_posYbf >= P_posY|| Mathf.Abs(P_posYbf - P_posY) >=10)
+            if (P_posYbf >= P_posY || Mathf.Abs(P_posYbf - P_posY) >= 10)
             {
                 P_posYbf = P_posY;
 
@@ -220,7 +227,7 @@ public class Generate : MonoBehaviour
         }
 
 
-        if (Random.Range(0,2)==1)
+        if (Random.Range(0, 2) == 1)
         {
         }
     }
@@ -246,57 +253,61 @@ public class Generate : MonoBehaviour
 
         }
     }
-    
+
     //敵のインスタンス
     void EnemyGenerate()
     {
         int side;
         side = Random.Range(0, 2);
-        if (side==0)
+        if (side == 0)
         {
-           　GameObject EnemyBox = Instantiate(Enemy, new Vector3(left, P_posY - distance, 0), Nailrot);
+            GameObject EnemyBox = Instantiate(Enemy, new Vector3(left, P_posY - distance, 0), Nailrot);
         }
-        if (side==1)
+        if (side == 1)
         {
-            GameObject EnemyBox =Instantiate(Enemy, new Vector3(right, P_posY - distance, 0), Nailrot);
+            GameObject EnemyBox = Instantiate(Enemy, new Vector3(right, P_posY - distance, 0), Nailrot);
         }
     }
 
     //NGエリアのインスタンス
     void NGAreaGenerate()
     {
-        Instantiate(NG, new Vector3(Random.Range(senter, right), P_posY-distance, 0), Nailrot);
+        Instantiate(NG, new Vector3(Random.Range(senter, right), P_posY - distance, 0), Nailrot);
     }
 
     //GOALエリアのインスタンス
     void GoalAreaGenerate()
     {
         Goal_posX = (left + right) / 2;
-        Instantiate(Goal, new Vector3(Goal_posX, -StageLength+2, 0), Nailrot);
+        Instantiate(Goal, new Vector3(Goal_posX, -StageLength + 2, 0), Nailrot);
     }
 
 
     //壁のインスタンス
     void WallGenerate()
     {
-        //壁のインスタンス
+        
+
         Instantiate(Wall_LRDS, new Vector3(left, -StageLength / 2, 0), Nrot);
         Instantiate(Wall_LRDS, new Vector3(right, -StageLength / 2, 0), Nrot);
-        
+
         //底
         GameObject WallDown = Instantiate(Wall_LRDS, new Vector3((left + right) / 2, -StageLength, 0), Nrot);
         WallDown.transform.localScale = new Vector3(Mathf.Abs(left) + Mathf.Abs(right), 1, depth);
 
-        
         //前後
         Instantiate(Wall_BA, new Vector3((left + right) / 2, -StageLength / 2, -1.5f), Nrot);
-        GameObject flont= Instantiate(Wall_BA, new Vector3((left + right) / 2, -StageLength / 2, 1.5f), Nrot);
+        GameObject flont = Instantiate(Wall_BA, new Vector3((left + right) / 2, -StageLength / 2, 1.5f), Nrot);
         flont.transform.localScale = new Vector3(flont.transform.localScale.x, flont.transform.localScale.y + 30, flont.transform.localScale.z);
     }
 
     void ItemGenerate()
     {
-       GameObject BigSmall = Instantiate(bigSmall, new Vector3(Random.Range(senter, right), P_posY - distance, 0), Nrot);
+        GameObject BigSmall = Instantiate(bigSmall, new Vector3(Random.Range(senter, right), P_posY - distance, 0), Nrot);
     }
 
+    public bool GetStage_In
+    {
+        get { return stage_in; }
+    }
 }

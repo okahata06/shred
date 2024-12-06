@@ -12,6 +12,7 @@ TagManager:
   - EnemyBullet
   - BulletEffect
   - EffectManager
+  - Generater
   layers:
   - Default
   - TransparentFX

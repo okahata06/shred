@@ -23,12 +23,11 @@ public class bustar : MonoBehaviour
     Vector3 set;
     Vector3 bust;
 
-    camera CMR;
-
+    Generate Gen;
     // Start is called before the first frame update
     void Start()
     {
-        CMR=GameObject.FindGameObjectWithTag("MainCamera").GetComponent<camera>();
+        Gen=GameObject.FindGameObjectWithTag("Generater").GetComponent<Generate>();
         //初期エネルギーを最大値に
         Energy_Remaining = Energy_Max;
         //ゲージUIの最大値
@@ -49,7 +48,7 @@ public class bustar : MonoBehaviour
         { set.x = 5; }
         else
         {
-            if(!CMR.GetSetTitleEnd)
+            if(!Gen.GetStage_In)
             { set.y = 0; }
             else { set.y=bust_power; }
             set.x = 0;

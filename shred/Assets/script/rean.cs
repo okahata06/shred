@@ -6,7 +6,7 @@ public class rean : MonoBehaviour
 {
     float posY;
     float count=0;
-    float move = 0.05f;
+    float move = 0.3f;
     float MAXmove = 0.3f;
     bool up=true;
 
