@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17961432, g: 0.22489801, b: 0.30646592, a: 1}
+  m_IndirectSpecularColor: {r: 0.17961453, g: 0.2248984, b: 0.30646664, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1036,8 +1036,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnergyGage: {fileID: 812214129}
-  bust_power: 0.7
-  Energy_Max: 200
+  bust_power: 10000
+  Energy_Max: 9999999
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

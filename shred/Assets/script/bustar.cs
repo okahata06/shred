@@ -54,7 +54,7 @@ public class bustar : MonoBehaviour
             set.x = 0;
         }
         //ベクトルの正規化
-        bust = Vector3.Normalize(quaternion.z * set);
+        bust = Vector3.Normalize(quaternion.z * set)*Time.deltaTime;
 
         //残量あり＆スペースを押すとブースト
         if (Input.GetKey(KeyCode.Space) && Energy_Remaining > 0)
