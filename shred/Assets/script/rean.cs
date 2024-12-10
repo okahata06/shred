@@ -6,8 +6,8 @@ public class rean : MonoBehaviour
 {
     float posY;
     float count=0;
-    float move = 0.3f;
-    float MAXmove = 0.3f;
+    float move = 2f;
+    float MAXmove = 0.2f;
     bool up=true;
 
     Vector3 pos;
@@ -30,12 +30,12 @@ public class rean : MonoBehaviour
         count += Time.deltaTime;
         if( up&&count>=2)
         {
-            pos.y += move;
+            pos.y += move*Time.deltaTime;
         if(pos.y >= MAXmove) { up = false; count = 0; }
         }
         else if(!up)
         {
-            pos.y -= move;
+            pos.y -= move * Time.deltaTime;
             if (pos.y <= posY) { up = true; }
 
         }
