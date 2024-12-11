@@ -33,7 +33,6 @@ public class bustar : MonoBehaviour
         //ゲージUIの最大値
         EnergyGage.maxValue = Energy_Max;
 
-        quaternion.z = gameObject.transform.rotation.z + 90;
         set = new Vector3(0, bust_power, 0);
         rig = GetComponent<Rigidbody>();
     }
@@ -43,9 +42,9 @@ public class bustar : MonoBehaviour
     {
         //左右への移動ベクトル付与
         if (Input.GetKey(KeyCode.RightArrow))
-        { set.x = -5; }
+        { set.x = -bust_power*2; }
         else if (Input.GetKey(KeyCode.LeftArrow))
-        { set.x = 5; }
+        { set.x = bust_power*2; }
         else
         {
             if(!Gen.GetStage_In)
@@ -53,8 +52,7 @@ public class bustar : MonoBehaviour
             else { set.y=bust_power; }
             set.x = 0;
         }
-        //ベクトルの正規化
-        bust = Vector3.Normalize(quaternion.z * set)*Time.deltaTime;
+        bust =set * Time.deltaTime;
 
         //残量あり＆スペースを押すとブースト
         if (Input.GetKey(KeyCode.Space) && Energy_Remaining > 0)

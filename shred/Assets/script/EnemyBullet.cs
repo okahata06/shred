@@ -8,7 +8,7 @@ public class EnemyBullet : MonoBehaviour
     Transform Player_t;
 
     [SerializeField, Header("弾速")]
-    float Bullet_Speed = 0.01f;
+    float Bullet_Speed = 3;
 
     int bullet_C=0;//消滅までのカウント
 
@@ -21,7 +21,7 @@ public class EnemyBullet : MonoBehaviour
     //エフェクト取得用
     EffectManager EM;
     GameObject BulletEffect;
-    int c=0;
+    float c=0;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,14 +39,14 @@ public class EnemyBullet : MonoBehaviour
         Bullet_vec = Vector3.Normalize(Bullet_vec);
 
         //ベクトル方向に弾速を付与
-        Bullet_vec = Bullet_vec * Bullet_Speed;
+        Bullet_vec = Bullet_vec * Bullet_Speed*Time.deltaTime;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        c++;
-        if(c>=11)
+        c+=Time.deltaTime;
+        if(c>=0.01)
         {
             Instantiate(BulletEffect, transform.position, transform.rotation);
             c = 0;

@@ -27,7 +27,7 @@ public class camera : MonoBehaviour
 
     float Count = 0;//効果時間カウント用
     [SerializeField, Header("効果時間(秒)")]
-    int EndTime = 10;
+    int EndTime = 5;
 
 
     float vibLevel = 0.7f;//揺れの大きさ
@@ -88,7 +88,7 @@ public class camera : MonoBehaviour
             transform.position = Vector3.Lerp(Title_pos, PlayMode_pos, ChangeTime);
             transform.rotation = Quaternion.Lerp(title_rot, PlayMode_rot, ChangeTime);
             //遷移速度
-            ChangeTime += 0.003f;
+            ChangeTime += 0.6f*Time.deltaTime;
             
             //移動が終わったらプレイ中のコードへ移動
             if(ChangeTime>=1)
