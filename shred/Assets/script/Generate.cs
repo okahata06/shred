@@ -8,7 +8,7 @@ public class Generate : MonoBehaviour
     int P_posY;
     int P_posYbf;
     int distance = 25;//Playerとインスタンスする釘の距離
-    int Enemy_pos;
+    int StageNumber;
 
 
     float time;//経過時間
@@ -17,9 +17,9 @@ public class Generate : MonoBehaviour
     float Goal_posX = 0;
     float BlockTime = -1;
 
-    bool NailCheck;
     bool Nail_LR = false;//釘の召喚をばらけさせるため。右がfalse
     bool Goal_Gen = false;
+
 
     [SerializeField, Header("カメラ")]
     GameObject CAMERA;
@@ -65,6 +65,8 @@ public class Generate : MonoBehaviour
 
     GameObject c_nail;
 
+
+
     //インスタンス用無回転
     Quaternion Nrot = Quaternion.identity;
 
@@ -75,6 +77,7 @@ public class Generate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         CMR = CAMERA.GetComponent<camera>();
         //プレイヤーの座標取得
         P_t = Player.GetComponent<Transform>();
@@ -110,6 +113,7 @@ public class Generate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(StageNumber);
         //プレイヤーのy座標取得
         P_posY = (int)Player.transform.position.y;
         time = time + Time.deltaTime;
@@ -199,7 +203,6 @@ public class Generate : MonoBehaviour
             }
             bfTime += 0.5f;
         }
-        Debug.Log(Random.Range(0, 3));
     }
 
     //---------------------------インスタンス-------------------------------//
@@ -309,5 +312,10 @@ public class Generate : MonoBehaviour
     public bool GetStage_In
     {
         get { return stage_in; }
+    }
+
+    public int SetStageNumber
+    {
+        set { StageNumber = value; }
     }
 }

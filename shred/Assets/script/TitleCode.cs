@@ -8,10 +8,13 @@ public class TitleCode : MonoBehaviour
     GameObject Camera;
 
     camera CMR;
+    Generate Gen;
 
+    int StageNumber=0;
     // Start is called before the first frame update
     void Start()
     {
+        Gen=GameObject.Find("Generater").GetComponent<Generate>();
         CMR=Camera.GetComponent<camera>();
     }
 
@@ -19,9 +22,25 @@ public class TitleCode : MonoBehaviour
 
     public void OnPressed()
     {
+        
         CMR.GetSetTitleEnd = true;
-
+        if(gameObject.name==("ButtonStage1"))
+        {
+            StageNumber = 1;
+            Gen.SetStageNumber = StageNumber;
+        }
+        if(gameObject.name==("ButtonStage2"))
+        {
+            StageNumber = 2;
+            Gen.SetStageNumber = StageNumber;
+        }
+        if (gameObject.name==("ButtonStage3"))
+        {
+            StageNumber = 3;
+            Gen.SetStageNumber = StageNumber;
+        }
         Destroy(transform.parent.gameObject);
     }
 
 }
+
