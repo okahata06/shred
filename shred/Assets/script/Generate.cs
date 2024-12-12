@@ -15,7 +15,7 @@ public class Generate : MonoBehaviour
     float bfTime = 0;//player座標チェック用
     float NailTime = 0.5f;//釘召喚用
     float Goal_posX = 0;
-    float BlockTime = 0;
+    float BlockTime = -1;
 
     bool NailCheck;
     bool Nail_LR = false;//釘の召喚をばらけさせるため。右がfalse
@@ -133,7 +133,7 @@ public class Generate : MonoBehaviour
                 P_posYbf > P_posY)//落下していないときは生成しない
         {
             //確率でインスタンス
-            switch (Random.Range(0, 60))
+            switch (Random.Range(0, 100))
             {
                 case 0:
                 case 1:

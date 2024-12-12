@@ -21,7 +21,7 @@ public class TitleCode : MonoBehaviour
     {
         CMR.GetSetTitleEnd = true;
 
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
 
 }
