@@ -27,17 +27,17 @@ public class TitleCode : MonoBehaviour
         if(gameObject.name==("ButtonStage1"))
         {
             StageNumber = 1;
-            Gen.SetStageNumber = StageNumber;
+            Gen.GetSetStageNumber = StageNumber;
         }
         if(gameObject.name==("ButtonStage2"))
         {
             StageNumber = 2;
-            Gen.SetStageNumber = StageNumber;
+            Gen.GetSetStageNumber = StageNumber;
         }
         if (gameObject.name==("ButtonStage3"))
         {
             StageNumber = 3;
-            Gen.SetStageNumber = StageNumber;
+            Gen.GetSetStageNumber = StageNumber;
         }
         Destroy(transform.parent.gameObject);
     }

@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
 
     Transform P_t;
     Quaternion BulletRot;
-    int Go_count = 0;
+    float Go_count = 0;
 
 
     // Start is called before the first frame update
@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         //一定間隔＆プレイヤーの座標が下側じゃないとき
-        if(Go_count>=180&&P_t.position.y-transform.position.y>=-1)
+        if(Go_count>=0.5&&P_t.position.y-transform.position.y>=-1)
         {
             //インスタンス
             GameObject E_Bullet = Instantiate(Bullet, gameObject.transform.position, BulletRot);
@@ -36,6 +36,6 @@ public class Enemy : MonoBehaviour
             Go_count = 0;
         }
         //180までカウント
-        Go_count++;
+        Go_count+=Time.deltaTime;
     }
 }

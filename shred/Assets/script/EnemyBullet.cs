@@ -10,24 +10,45 @@ public class EnemyBullet : MonoBehaviour
     [SerializeField, Header("弾速")]
     float Bullet_Speed = 3;
 
-    int bullet_C=0;//消滅までのカウント
+    float bullet_C=0;//消滅までのカウント
 
     bool fastHit=true;
 
     Vector3 Bullet_vec;//弾の放出ベクトル
-    Vector3 BE_vec;//エフェクトの座標
-    int BEx = 0;//エフェクトの位置調整として、Bullet_vecにかける
 
+    Generate Gen;
+    float StageNumber=1;
     //エフェクト取得用
     EffectManager EM;
     GameObject BulletEffect;
+    
     float c=0;
+    float EF_cooltime;
     // Start is called before the first frame update
     void Start()
-    {
+    {      
         //エフェクト取得
         EM=GameObject.FindGameObjectWithTag("EffectManager").GetComponent<EffectManager>();
         BulletEffect=EM.GetEffect2;
+        
+        //ステージ取得
+        Gen = GameObject.Find("Generater").GetComponent<Generate>();
+        StageNumber = Gen.GetSetStageNumber;
+        //ステージ事に弾速/エフェクト調整
+        if (StageNumber == 1) 
+        { 
+            EF_cooltime = 0.01f; 
+        }
+        else if (StageNumber == 2)
+        {
+            Bullet_Speed *= 1.2f;
+            EF_cooltime = 0.01f;
+        }
+        else if (StageNumber == 3)
+        {
+            Bullet_Speed *= 5;
+            EF_cooltime = 0.01f;
+        }
 
         //プレイヤーの座標取得
         Player_t = GameObject.Find("Hips").transform;
@@ -46,7 +67,7 @@ public class EnemyBullet : MonoBehaviour
     private void Update()
     {
         c+=Time.deltaTime;
-        if(c>=0.01)
+        if(c>=EF_cooltime)
         {
             Instantiate(BulletEffect, transform.position, transform.rotation);
             c = 0;
@@ -55,8 +76,8 @@ public class EnemyBullet : MonoBehaviour
         transform.position += Bullet_vec;
         
         //消滅カウント
-        bullet_C++;
-        if (bullet_C >= 1300) { Destroy(gameObject); }
+        bullet_C+=Time.deltaTime;
+        if (bullet_C >= 5) { Destroy(gameObject); }
     }
 
 

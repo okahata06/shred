@@ -77,7 +77,7 @@ public class Generate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
         CMR = CAMERA.GetComponent<camera>();
         //プレイヤーの座標取得
         P_t = Player.GetComponent<Transform>();
@@ -113,7 +113,6 @@ public class Generate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(StageNumber);
         //プレイヤーのy座標取得
         P_posY = (int)Player.transform.position.y;
         time = time + Time.deltaTime;
@@ -144,14 +143,50 @@ public class Generate : MonoBehaviour
                     //NGエリアのインスタンス
                     NGAreaGenerate();
                     break;
-                case 2:
                 case 3:
-                case 4:
+                    if (StageNumber > 1)
+                        //NGエリアのインスタンス
+                        NGAreaGenerate();
+                    break;
+                case 10:
+                case 11:
+                case 12:
                     //敵のインスタンス
                     EnemyGenerate();
                     break;
-                case 5:
-                case 6:
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 19:
+                case 20:
+                case 21:
+                case 22:
+                case 23:
+                case 24:
+                case 25:
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                case 35:
+                case 36:
+                case 37:
+                case 38:
+                case 39:
+                    if (StageNumber > 1)
+                        //敵のインスタンス
+                        EnemyGenerate();
+                    break;
+                case 50:
+                case 51:
                     //アイテム系のインスタンス
                     ItemGenerate();
                     break;
@@ -314,8 +349,9 @@ public class Generate : MonoBehaviour
         get { return stage_in; }
     }
 
-    public int SetStageNumber
+    public int GetSetStageNumber
     {
+        get { return StageNumber; }
         set { StageNumber = value; }
     }
 }
