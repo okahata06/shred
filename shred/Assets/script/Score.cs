@@ -8,13 +8,15 @@ public class Score : MonoBehaviour
     public static int Body;
     public static int Body_Break;
 
+    float time;
+
     [SerializeField] TextMeshProUGUI VarText;
     int NowTimes = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        time = Time.time;
     }
 
 
@@ -26,8 +28,11 @@ public class Score : MonoBehaviour
 
             string Times = NowTimes.ToString();
 
-            VarText.text = "Score:" + Times + "‰ñ\n"
-                            +"a";
+            string BodyBreak=Body_Break.ToString();
+
+            VarText.text = "•”ˆÊ”j‘¹ :" + BodyBreak + "‰ñ\n"
+                            +"Time :" + Time.time + "‰ñ\n"
+                            + "Score :" + "‰ñ";
         }
     }
 }
