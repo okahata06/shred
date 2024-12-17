@@ -6,7 +6,6 @@ using UnityEngine.Audio;
 
 public class HitCheck : MonoBehaviour
 {
-
     EnemyBullet EnemyBullet;
 
     BoxCollider BC;
@@ -43,6 +42,8 @@ public class HitCheck : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Score.Body++;
+        
         //ÉJÉÅÉâêUìÆbooléÊìæ
         cmr = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<camera>();
 
@@ -100,6 +101,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == thredbreak)
                 {
                     Hit_Nail();
+                    Score.Body_Break++;
                 }
             }
             else if (gameObject.name == ("LeftCalf"))//ç∂Ç”Ç≠ÇÁÇÕÇ¨
@@ -107,6 +109,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == secondbreak)
                 {
                     Hit_Nail();
+                    Score.Body_Break++;
                 }
             }
             else if (gameObject.name == ("LeftFoot"))//ç∂ë´êÊ
@@ -114,6 +117,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == fastbreak)
                 {
                     Hit_Nail();
+                    Score.Body_Break++;
                 }
             }
             else if (gameObject.name == ("RightLeg"))//âEëæÇ‡Ç‡
@@ -121,6 +125,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == thredbreak)
                 {
                     Hit_Nail();
+                    Score.Body_Break++;
                 }
             }
             else if (gameObject.name == ("RightCalf"))//âEÇ”Ç≠ÇÁÇÕÇ¨
@@ -128,6 +133,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == secondbreak)
                 {
                     Hit_Nail();
+                    Score.Body_Break++;
                 }
             }
             else if (gameObject.name == ("RightFoot"))//âEë´êÊ
@@ -135,6 +141,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == fastbreak)
                 {
                     Hit_Nail();
+                    Score.Body_Break++;
                 }
             }
             else if (gameObject.name == ("LeftUpperArm"))//ç∂è„òr
@@ -142,6 +149,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == thredbreak)
                 {
                     Hit_Nail();
+                    Score.Body_Break++;
                 }
             }
             else if (gameObject.name == ("LeftArm"))//ç∂òr
@@ -149,6 +157,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == secondbreak)
                 {
                     Hit_Nail();
+                    Score.Body_Break++;
                 }
             }
             else if (gameObject.name == ("LeftHand"))//ç∂éË
@@ -156,6 +165,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == fastbreak)
                 {
                     Hit_Nail();
+                    Score.Body_Break++;
                 }
             }
             else if (gameObject.name == ("RightUpperArm"))//âEè„òr
@@ -163,6 +173,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == thredbreak)
                 {
                     Hit_Nail();
+                    Score.Body_Break++;
                 }
             }
             else if (gameObject.name == ("RightArm"))//âEòr
@@ -170,6 +181,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == secondbreak)
                 {
                     Hit_Nail();
+                    Score.Body_Break++;
                 }
             }
             else if (gameObject.name == ("RightHand"))//âEéË
@@ -177,13 +189,15 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == fastbreak)
                 {
                     Hit_Nail();
+                    Score.Body_Break++;
                 }
             }
             else if (gameObject.name == ("Head"))//ì™ïî
             {
                 if (Hit_C == secondbreak)
                 {
-                    Hit_Nail();        
+                    Hit_Nail();
+                    Score.Body_Break++;
                 }
             }
         }
@@ -210,6 +224,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == thredbreak)
                 {
                     Hit_Bullet();
+                    Score.Body_Break++;
                 }
             }
             else if (gameObject.name == ("LeftCalf"))//ç∂Ç”Ç≠ÇÁÇÕÇ¨
@@ -217,6 +232,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == secondbreak)
                 {
                     Hit_Bullet();
+                    Score.Body_Break++;
                 }
             }
             else if (gameObject.name == ("LeftFoot"))//ç∂ë´êÊ
@@ -224,6 +240,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == fastbreak)
                 {
                     Hit_Bullet();
+                    Score.Body_Break++;
                 }
             }
             else if (gameObject.name == ("RightLeg"))//âEëæÇ‡Ç‡
@@ -231,6 +248,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == thredbreak)
                 {
                     Hit_Bullet();
+                    Score.Body_Break++;
                 }
             }
             else if (gameObject.name == ("RightCalf"))//âEÇ”Ç≠ÇÁÇÕÇ¨
@@ -238,6 +256,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == secondbreak)
                 {
                     Hit_Bullet();
+                    Score.Body_Break++;
                 }
             }
             else if (gameObject.name == ("RightFoot"))//âEë´êÊ
@@ -245,6 +264,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == fastbreak)
                 {
                     Hit_Bullet();
+                    Score.Body_Break++;
                 }
             }
             else if (gameObject.name == ("LeftUpperArm"))//ç∂è„òr
@@ -252,6 +272,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == thredbreak)
                 {
                     Hit_Bullet();
+                    Score.Body_Break++;
                 }
             }
             else if (gameObject.name == ("LeftArm"))//ç∂òr
@@ -259,6 +280,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == secondbreak)
                 {
                     Hit_Bullet();
+                    Score.Body_Break++;
                 }
             }
             else if (gameObject.name == ("LeftHand"))//ç∂éË
@@ -266,6 +288,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == fastbreak)
                 {
                     Hit_Bullet();
+                    Score.Body_Break++;
                 }
             }
             else if (gameObject.name == ("RightUpperArm"))//âEè„òr
@@ -273,6 +296,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == thredbreak)
                 {
                     Hit_Bullet();
+                    Score.Body_Break++;
                 }
             }
             else if (gameObject.name == ("RightArm"))//âEòr
@@ -280,6 +304,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == secondbreak)
                 {
                     Hit_Bullet();
+                    Score.Body_Break++;
                 }
             }
             else if (gameObject.name == ("RightHand"))//âEéË
@@ -287,6 +312,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == fastbreak)
                 {
                     Hit_Bullet();
+                    Score.Body_Break++;
                 }
             }
             else if (gameObject.name == ("Head"))//ì™ïî
@@ -294,6 +320,7 @@ public class HitCheck : MonoBehaviour
                 if (Hit_C == secondbreak)
                 {
                     Hit_Bullet();
+                    Score.Body_Break++;
                 }
             }
 
