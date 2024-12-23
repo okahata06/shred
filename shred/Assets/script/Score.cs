@@ -8,31 +8,32 @@ public class Score : MonoBehaviour
     public static int Body;
     public static int Body_Break;
 
-    float time;
+    int time;
+    bool fast = true;
 
     [SerializeField] TextMeshProUGUI VarText;
-    int NowTimes = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        time = Time.time;
+        time = (int)Time.time;
     }
 
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (fast)
         {
-            NowTimes++;
+            fast = false;
 
-            string Times = NowTimes.ToString();
+            time = (int)Time.time;
+            Body_Break = Body - Body_Break;
 
-            string BodyBreak=Body_Break.ToString();
+            string BodyBreak = Body_Break.ToString();
 
-            VarText.text = "•”ˆÊ”j‘¹ :" + BodyBreak + "‰ñ\n"
-                            +"Time :" + Time.time + "‰ñ\n"
-                            + "Score :" + "‰ñ";
+            VarText.text = "Žc‘¶•”ˆÊ :" + BodyBreak + "/" + Body + "\n"
+                            + "Time :" + time + "s\n"
+                            + "Score :" + "999";
         }
     }
 }
