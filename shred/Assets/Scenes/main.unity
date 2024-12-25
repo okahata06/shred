@@ -299,15 +299,15 @@ RectTransform:
   m_GameObject: {fileID: 66893912}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.76, y: 0.76, z: 0.76}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1154802713}
   m_Father: {fileID: 1394890528}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.45, y: 0.2}
   m_AnchorMax: {x: 0.55, y: 0.25}
-  m_AnchoredPosition: {x: 34, y: 11.920013}
+  m_AnchoredPosition: {x: 22.999996, y: -27.800018}
   m_SizeDelta: {x: 30, y: 12.839996}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &66893914
@@ -3545,15 +3545,15 @@ RectTransform:
   m_GameObject: {fileID: 1415247541}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.76, y: 0.76, z: 0.76}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1357013019}
   m_Father: {fileID: 1394890528}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.45, y: 0.1}
   m_AnchorMax: {x: 0.55, y: 0.15}
-  m_AnchoredPosition: {x: 34, y: 6.580078}
+  m_AnchoredPosition: {x: 23, y: -15.21991}
   m_SizeDelta: {x: 30, y: 12.52002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1415247543
@@ -4584,8 +4584,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 77.11, y: 127.59001}
-  m_SizeDelta: {x: -472, y: -324}
+  m_AnchoredPosition: {x: 88.20499, y: 157}
+  m_SizeDelta: {x: -494.18997, y: -324}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1831944496
 MonoBehaviour:
@@ -4616,8 +4616,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4287412201
-  m_fontColor: {r: 0.9150943, g: 0.71793723, b: 0.5481933, a: 1}
+    rgba: 4279899673
+  m_fontColor: {r: 0.09870306, g: 0.08664116, b: 0.103773594, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4634,8 +4634,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.4
-  m_fontSizeBase: 40.4
+  m_fontSize: 71.6
+  m_fontSizeBase: 71.6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4713,15 +4713,15 @@ RectTransform:
   m_GameObject: {fileID: 1879453953}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.76, y: 0.76, z: 0.76}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1765750521}
   m_Father: {fileID: 1394890528}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.45, y: 0.3}
   m_AnchorMax: {x: 0.55, y: 0.35}
-  m_AnchoredPosition: {x: 34, y: 16.570007}
+  m_AnchoredPosition: {x: 22.999996, y: -41.800003}
   m_SizeDelta: {x: 30, y: 11.539986}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1879453955
@@ -5091,8 +5091,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 17.949951, y: 81.89502}
-  m_SizeDelta: {x: -445.1, y: 73.69}
+  m_AnchoredPosition: {x: 17.949951, y: 137.58499}
+  m_SizeDelta: {x: -445.1, y: 126.24998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2015925836
 MonoBehaviour:
@@ -5141,8 +5141,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 17.66
+  m_fontSizeBase: 17.66
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -5419,7 +5419,7 @@ PrefabInstance:
     - target: {fileID: 6305286895365317883, guid: ff8e9ab8afc01fa44964559bc356765b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 18afec5c512a0a046868abafe05bde85, type: 2}
+      objectReference: {fileID: 2100000, guid: 61e20bf3331b9284d8759c0c7190cd8f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
