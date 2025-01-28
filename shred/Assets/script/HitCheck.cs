@@ -14,8 +14,8 @@ public class HitCheck : MonoBehaviour
 
 
     bool E_BulletHit;
-    int fastbreak = 8;//‘æOŠÖß
-    int secondbreak = 15;//‘æ“ñŠÖß
+    int fastbreak = 6;//‘æOŠÖß
+    int secondbreak = 13;//‘æ“ñŠÖß
     int thredbreak = 25;//‘æˆêŠÖß
     int Hit_C = 0;
     //•”ˆÊ”j‘¹‚ÌU“®ƒŒƒxƒ‹

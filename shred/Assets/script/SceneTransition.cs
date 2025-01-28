@@ -20,20 +20,27 @@ public class SceneTransition : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
+            Score.Body = 0;
+            Score.Body_Break = 0;
+
             SceneManager.LoadScene("main");
 
         }
         else if (SceneManager.GetActiveScene().name == "GoalScene")
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Return))
             {
+                Score.Body = 0;
+                Score.Body_Break = 0;
                 SceneManager.LoadScene("main");
             }
         }
         else if (SceneManager.GetActiveScene().name == "NGScene")
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Return))
             {
+                Score.Body = 0;
+                Score.Body_Break = 0;
                 SceneManager.LoadScene("main");
 
             }
