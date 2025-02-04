@@ -7,10 +7,10 @@ public class Score : MonoBehaviour
 {
     public static int Body;
     public static int Body_Break;
+    public static float time;
     int SafeBody;
     int score=999;
-    int time;
-    int badtime=0;
+   float badtime=0;
     bool fast = true;
 
     [SerializeField] TextMeshProUGUI VarText;
@@ -18,7 +18,6 @@ public class Score : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        time = (int)Time.time;
     }
 
 
@@ -28,17 +27,16 @@ public class Score : MonoBehaviour
         {
             fast = false;
 
-            time = (int)Time.time;
             if(time>60)
-            { badtime = time-60; }
+            { badtime = time-60.0f; }
             SafeBody = Body - Body_Break;
-            score = 999 - (Body_Break * 65+badtime);
+            score = 999 - (Body_Break * 65+(int)badtime);
 
            // Debug.Log("score" + score + "Body_Break" + Body_Break + "*65=" + Body_Break * 65 + "badtime" + badtime);
             string BodyBreak = Body_Break.ToString();
 
             VarText.text = "Žc‘¶•”ˆÊ :" + SafeBody + "/" + Body + "\n"
-                            + "Time :" + time + "s\n"
+                            + "Time :" + (int)time + "s\n"
                             + "Score :" + score;
         }
     }

@@ -18,11 +18,11 @@ public class SceneTransition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Score.time += Time.deltaTime;
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            Score.Body = 0;
             Score.Body_Break = 0;
-
+            Score.time = 0;
             SceneManager.LoadScene("main");
 
         }
@@ -30,8 +30,8 @@ public class SceneTransition : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                Score.Body = 0;
                 Score.Body_Break = 0;
+            Score.time = 0;
                 SceneManager.LoadScene("main");
             }
         }
@@ -39,8 +39,8 @@ public class SceneTransition : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                Score.Body = 0;
                 Score.Body_Break = 0;
+            Score.time = 0;
                 SceneManager.LoadScene("main");
 
             }
