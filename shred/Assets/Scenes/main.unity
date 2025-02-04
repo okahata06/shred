@@ -5500,7 +5500,7 @@ PrefabInstance:
     - target: {fileID: 9168974083771494029, guid: d7c951157d18a6f44ae62bb46580d57d, type: 3}
       propertyPath: bigSmall
       value: 
-      objectReference: {fileID: 3257994829620423003, guid: 7479b545f2f2557498fd44ec15e401a0, type: 3}
+      objectReference: {fileID: 9013904354594375417, guid: 2eef47f63ab6e5946908031b942e005f, type: 3}
     - target: {fileID: 9168974083771494029, guid: d7c951157d18a6f44ae62bb46580d57d, type: 3}
       propertyPath: Wall_LRDS
       value: 
