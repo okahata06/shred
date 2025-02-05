@@ -21,8 +21,8 @@ public class SceneTransition : MonoBehaviour
         Score.time += Time.deltaTime;
         if(Input.GetKeyDown(KeyCode.Escape))
         {
+            Score.Body = 0;
             Score.Body_Break = 0;
-            Score.time = 0;
             SceneManager.LoadScene("main");
 
         }
@@ -31,7 +31,8 @@ public class SceneTransition : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 Score.Body_Break = 0;
-            Score.time = 0;
+                Score.Body = 0;
+
                 SceneManager.LoadScene("main");
             }
         }
@@ -40,7 +41,7 @@ public class SceneTransition : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 Score.Body_Break = 0;
-            Score.time = 0;
+                Score.Body = 0;
                 SceneManager.LoadScene("main");
 
             }
@@ -52,7 +53,6 @@ public class SceneTransition : MonoBehaviour
 
     private void OnTriggerStay(Collider oth)
     {
-        Debug.Log(NG_EntryCount);
 
         if (oth.tag != "Player") { return ; }
         if (gameObject.tag == "Goal")

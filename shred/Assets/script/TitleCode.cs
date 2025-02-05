@@ -22,31 +22,22 @@ public class TitleCode : MonoBehaviour
 
     public void OnPressed()
     {
-        
+        Score.time = 0;
         CMR.GetSetTitleEnd = true;
         if(gameObject.name==("ButtonStage1"))
         {
-            Score.Body = 0;
-            Score.Body_Break = 0;
-            Score.time = 0;
 
             StageNumber = 1;
             Gen.GetSetStageNumber = StageNumber;
         }
         if(gameObject.name==("ButtonStage2"))
         {
-            Score.Body = 0;
-            Score.Body_Break = 0;
-            Score.time = 0;
 
             StageNumber = 2;
             Gen.GetSetStageNumber = StageNumber;
         }
         if (gameObject.name==("ButtonStage3"))
         {
-            Score.Body = 0;
-            Score.Body_Break = 0;
-            Score.time = 0;
 
             StageNumber = 3;
             Gen.GetSetStageNumber = StageNumber;

@@ -133,10 +133,12 @@ public class Generate : MonoBehaviour
         else if (Nail_t.position.y - P_t.position.y <= distance &&//釘との距離で判定
             P_t.position.y >= -(StageLength - distance) &&
                 NailTime <= time &&//一定間隔のインターバル
-                P_posYbf > P_posY)//落下していないときは生成しない
+                P_posYbf > P_posY+0.5f)//落下していないときは生成しない
         {
+            int a = Random.Range(0, 100);
+            Debug.Log(a);
             //確率でインスタンス
-            switch (Random.Range(0, 100))
+            switch (a)
             {
                 case 0:
                 case 1:
@@ -148,40 +150,12 @@ public class Generate : MonoBehaviour
                         //NGエリアのインスタンス
                         NGAreaGenerate();
                     break;
-                case 10:
-                case 11:
-                case 12:
+                case <14:
                     //敵のインスタンス
                     EnemyGenerate();
                     break;
-                case 13:
-                case 14:
-                case 15:
-                case 16:
-                case 17:
-                case 18:
-                case 19:
-                case 20:
-                case 21:
-                case 22:
-                case 23:
-                case 24:
-                case 25:
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                case 35:
-                case 36:
-                case 37:
-                case 38:
-                case 39:
-                    if (StageNumber > 1)
+                case <39:
+                    if (StageNumber == 2)
                         //敵のインスタンス
                         EnemyGenerate();
                     break;
@@ -190,13 +164,16 @@ public class Generate : MonoBehaviour
                     //アイテム系のインスタンス
                     ItemGenerate();
                     break;
+                case <52:
+                    BlockGenerate();
+                    break;
                 default:
                     break;
             }
-
+            
             //釘のインスタンス
             NailGenerate();
-            NailTime += 0.15f;
+            NailTime += 0.1f;
         }
         //通り過ぎた釘を破壊
         else if (Nail_t.position.y > P_t.position.y + 10)
@@ -212,7 +189,7 @@ public class Generate : MonoBehaviour
         }
         else if (NailTime <= time)
         {
-            NailTime += 0.15f;
+            NailTime += 0.1f;
         }
 
         //ゴールの生成
