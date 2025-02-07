@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransition : MonoBehaviour
 {
+    float CoolTime=0;
     float time = 0;
     float NG_EntryCount=0;
     float Goal_EntryCount=0;
@@ -18,9 +19,12 @@ public class SceneTransition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CoolTime += Time.deltaTime;
+        Debug.Log(Input.GetKeyDown(KeyCode.Space));
         Score.time += Time.deltaTime;
         if(Input.GetKeyDown(KeyCode.Escape))
         {
+                CoolTime = 0;
             Score.Body = 0;
             Score.Body_Break = 0;
             SceneManager.LoadScene("main");
@@ -28,7 +32,7 @@ public class SceneTransition : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "GoalScene")
         {
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Space)&&CoolTime>2)
             {
                 Score.Body_Break = 0;
                 Score.Body = 0;
@@ -38,7 +42,7 @@ public class SceneTransition : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "NGScene")
         {
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Space)&& CoolTime > 2)
             {
                 Score.Body_Break = 0;
                 Score.Body = 0;
@@ -60,6 +64,7 @@ public class SceneTransition : MonoBehaviour
             Goal_EntryCount += Time.deltaTime;
             if(Goal_EntryCount>=5)
             {
+                CoolTime = 0;
                 Invoke("ChangeScene", 0.5f);
 
             }
@@ -69,6 +74,7 @@ public class SceneTransition : MonoBehaviour
         {
             NG_EntryCount += Time.deltaTime;
             if (NG_EntryCount >= 5)
+                CoolTime = 0;
             {
                 Invoke("ChangeScene", 0.5f);
 
