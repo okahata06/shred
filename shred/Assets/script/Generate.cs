@@ -142,7 +142,7 @@ public class Generate : MonoBehaviour
                 case 0:
                 case 1:
                     //NGエリアのインスタンス
-                    NGAreaGenerate();
+//                    NGAreaGenerate();
                     break;
                 case <14:
                     //敵のインスタンス
