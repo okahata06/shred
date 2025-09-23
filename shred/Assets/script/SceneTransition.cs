@@ -20,7 +20,6 @@ public class SceneTransition : MonoBehaviour
     void Update()
     {
         CoolTime += Time.deltaTime;
-        Debug.Log(Input.GetKeyDown(KeyCode.Space));
         Score.time += Time.deltaTime;
         if(Input.GetKeyDown(KeyCode.Escape))
         {
@@ -74,8 +73,8 @@ public class SceneTransition : MonoBehaviour
         {
             NG_EntryCount += Time.deltaTime;
             if (NG_EntryCount >= 5)
-                CoolTime = 0;
             {
+                CoolTime = 0;
                 Invoke("ChangeScene", 0.5f);
 
             }
@@ -86,6 +85,7 @@ public class SceneTransition : MonoBehaviour
             Goal_EntryCount = 0;
 
         }
+        Debug.Log(NG_EntryCount);
     }
    
     void ChangeScene()

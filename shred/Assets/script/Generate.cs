@@ -142,16 +142,18 @@ public class Generate : MonoBehaviour
                 case 0:
                 case 1:
                     //NGエリアのインスタンス
-//                    NGAreaGenerate();
+                    NGAreaGenerate();
                     break;
-                case <14:
+                case <10:
                     //敵のインスタンス
                     EnemyGenerate();
                     break;
-                case <39:
+                case <35:
                     if (StageNumber == 2)
+                    {
                         //敵のインスタンス
                         EnemyGenerate();
+                    }
                     break;
                 case 50:
                 case 51:
@@ -189,7 +191,6 @@ public class Generate : MonoBehaviour
         //ゴールの生成
         if (P_t.position.y <= -(StageLength - distance) && !Goal_Gen)
         {
-            Debug.Log("aa");
             GoalAreaGenerate();
             Goal_Gen = true;
         }
