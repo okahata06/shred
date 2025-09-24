@@ -158,15 +158,12 @@ public class Generate : MonoBehaviour
                         EnemyGenerate();
                     }
                     break;
-                case 50:
-                case 51:
+                case 50 or 51:
                     //アイテム系のインスタンス
                     ItemGenerate();
                     break;
                 case <55:
                     BlockGenerate();
-                    break;
-                case < 80:
                     break;
                 default:
                     break;
