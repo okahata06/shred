@@ -19,6 +19,7 @@ public class Generate : MonoBehaviour
 
     bool Nail_LR = false;//釘の生成位置をばらけさせるため。右がfalse、左がtrue
     bool Goal_Gen = false;
+    bool stage_in = false;
 
     Vector3 block_pos;
 
@@ -63,7 +64,6 @@ public class Generate : MonoBehaviour
     float senter = 0;
     float depth = -2;
 
-    bool stage_in = false;
 
     GameObject c_nail;
 

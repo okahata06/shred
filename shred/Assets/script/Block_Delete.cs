@@ -6,13 +6,16 @@ public class Block_Delete : MonoBehaviour
 {
     int deleteTime = 8;
     float time;
-    // Update is called once per frame
+
+    Generate Gen;
     void Update()
     {
+        Gen = GameObject.FindGameObjectWithTag("Generater").GetComponent<Generate>();
         time += Time.deltaTime;
-        if(time > deleteTime)
+        
+        //ステージを選択するまでは消さない
+        if(Gen.GetStage_In&&time > deleteTime)
         {
-            Debug.Log(time);
             Destroy(gameObject);
 
         }
