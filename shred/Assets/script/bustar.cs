@@ -19,12 +19,10 @@ public class bustar : MonoBehaviour
     float cooltime = 0;
     float Energy_Remaining;
 
-    Quaternion quaternion;
     Vector3 set;
     Vector3 bust;
 
     Generate Gen;
-    // Start is called before the first frame update
     void Start()
     {
         Gen=GameObject.FindGameObjectWithTag("Generater").GetComponent<Generate>();
@@ -47,9 +45,12 @@ public class bustar : MonoBehaviour
         { set.x = bust_power*2; }
         else
         {
+            //ステージ開始前ならｙベクトルは0
             if(!Gen.GetStage_In)
             { set.y = 0; }
-            else { set.y=bust_power; }
+            else
+            { set.y=bust_power; }
+
             set.x = 0;
         }
         bust =set * Time.deltaTime;

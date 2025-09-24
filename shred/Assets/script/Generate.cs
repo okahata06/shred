@@ -13,11 +13,11 @@ public class Generate : MonoBehaviour
 
     float time;//経過時間
     float bfTime = 0;//player座標チェック用
-    float NailTime = 0.5f;//釘召喚用
+    float NailTime = 0.5f;//釘生成用
     float Goal_posX = 0;
     float BlockTime = -1;
 
-    bool Nail_LR = false;//釘の召喚をばらけさせるため。右がfalse
+    bool Nail_LR = false;//釘の生成位置をばらけさせるため。右がfalse、左がtrue
     bool Goal_Gen = false;
 
 
@@ -74,7 +74,6 @@ public class Generate : MonoBehaviour
     Quaternion Nailrot = Quaternion.Euler(90, 0, 0);
 
 
-    // Start is called before the first frame update
     void Start()
     {
         
@@ -83,13 +82,13 @@ public class Generate : MonoBehaviour
         P_t = Player.GetComponent<Transform>();
         P_posY = (int)P_t.position.y;
 
+        Debug.Log(P_posYbf);
 
         if (P_posYbf >= P_posY || Mathf.Abs(P_posYbf - P_posY) >= 10)
         {
             P_posYbf = P_posY;
 
         }
-
         //プレイヤーのいる地点からステージの終了地点を決める
         StageLength = P_posY + StageLength;
 
@@ -110,12 +109,11 @@ public class Generate : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         //プレイヤーのy座標取得
         P_posY = (int)Player.transform.position.y;
-        time = time + Time.deltaTime;
+        time = time + Time.deltaTime;//修正すべき
 
         if (P_posY <= -StageLength + (StageLength - 3))
         {
@@ -131,9 +129,9 @@ public class Generate : MonoBehaviour
         }
         //プレイ中
         else if (Nail_t.position.y - P_t.position.y <= distance &&//釘との距離で判定
-            P_t.position.y >= -(StageLength - distance) &&
-                NailTime <= time &&//一定間隔のインターバル
-                P_posYbf > P_posY+0.5f)//落下していないときは生成しない
+           -(StageLength - distance) <= P_t.position.y  &&
+                NailTime <= time &&//一定間隔のインターバル   //いらん？
+                P_posY + 0.5f < P_posYbf)//落下していないときは生成しない
         {
 
             //確率でインスタンス
@@ -162,6 +160,8 @@ public class Generate : MonoBehaviour
                     break;
                 case <55:
                     BlockGenerate();
+                    break;
+                case < 80:
                     break;
                 default:
                     break;
@@ -217,7 +217,14 @@ public class Generate : MonoBehaviour
     //タイトルブロックのインスタンス
     void BlockGenerate()
     {
-        GameObject block = Instantiate(Block, new Vector3(Random.Range(-6, 6), Block.transform.position.y, Block.transform.position.z), Nrot);
+        Vector3 block_pos;
+
+        if (stage_in)
+            block_pos = new Vector3(Random.Range(-6, 6), P_posY+distance, Block.transform.position.z);
+        else
+            block_pos = new Vector3(Random.Range(-6, 6), Block.transform.position.y, Block.transform.position.z);
+
+        GameObject block = Instantiate(Block, block_pos, Nrot);
         switch (Random.Range(0, 4))
         {
             case 0:
