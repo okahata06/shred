@@ -86,11 +86,8 @@ public class Generate : MonoBehaviour
 
         Debug.Log(P_posYbf);
 
-        if (P_posYbf >= P_posY || Mathf.Abs(P_posYbf - P_posY) >= 10)
-        {
             P_posYbf = P_posY;
 
-        }
         //プレイヤーのいる地点からステージの終了地点を決める
         StageLength = P_posY + StageLength;
 
@@ -131,11 +128,10 @@ public class Generate : MonoBehaviour
         }
         //プレイ中
         else if (Nail_t.position.y - P_t.position.y <= distance &&//釘との距離で判定
-           -(StageLength - distance) <= P_t.position.y  &&
-                NailTime <= time &&//一定間隔のインターバル   //いらん？
-                P_posY + 0.5f < P_posYbf)//落下していないときは生成しない
+           -(StageLength - distance) <= P_t.position.y  &&//ゴールエリアより上なら生成
+                NailTime <= time &&//一定間隔のインターバル 
+                P_posY + 0.5f < P_posYbf)//落下しているときに生成
         {
-
             //確率でインスタンス
             switch (Random.Range(0, 100))
             {
@@ -148,6 +144,13 @@ public class Generate : MonoBehaviour
                     //敵のインスタンス
                     EnemyGenerate();
                     break;
+                case < 18:
+                    if(StageNumber==2||StageNumber==3)
+                    {
+                        //敵のインスタンス
+                        EnemyGenerate();
+                    }
+                    break;               
                 case <35:
                     if (StageNumber == 2)
                     {
@@ -198,7 +201,7 @@ public class Generate : MonoBehaviour
         }
 
 
-        //タグで釘を検索（おそらく最も古いもの）
+        //タグで釘を検索
         c_nail = GameObject.FindGameObjectWithTag("Nail");
         //釘の座標を保存(Yがほしい)
         Nail_t.position = new Vector3(5, c_nail.transform.position.y);
@@ -274,6 +277,8 @@ public class Generate : MonoBehaviour
     //敵のインスタンス
     void EnemyGenerate()
     {
+        if (!stage_in)
+            return;
         int side;
         side = Random.Range(0, 2);
         if (side == 0)
@@ -320,6 +325,7 @@ public class Generate : MonoBehaviour
 
     void ItemGenerate()
     {
+
         GameObject BigSmall = Instantiate(bigSmall, new Vector3(Random.Range(senter, right), P_posY - distance, 0), Nrot);
     }
 
