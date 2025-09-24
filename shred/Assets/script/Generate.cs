@@ -20,6 +20,8 @@ public class Generate : MonoBehaviour
     bool Nail_LR = false;//釘の生成位置をばらけさせるため。右がfalse、左がtrue
     bool Goal_Gen = false;
 
+    Vector3 block_pos;
+
 
     [SerializeField, Header("カメラ")]
     GameObject CAMERA;
@@ -214,13 +216,13 @@ public class Generate : MonoBehaviour
 
     //---------------------------インスタンス-------------------------------//
 
-    //タイトルブロックのインスタンス
+    //ブロックのインスタンス
+    //プレイ中も背景として落下する
     void BlockGenerate()
     {
-        Vector3 block_pos;
 
         if (stage_in)
-            block_pos = new Vector3(Random.Range(-6, 6), P_posY+distance, Block.transform.position.z);
+            block_pos = new Vector3(Random.Range(-8, 8), P_posY+distance, Block.transform.position.z);
         else
             block_pos = new Vector3(Random.Range(-6, 6), Block.transform.position.y, Block.transform.position.z);
 
@@ -244,9 +246,7 @@ public class Generate : MonoBehaviour
         }
 
 
-        if (Random.Range(0, 2) == 1)
-        {
-        }
+
     }
 
     //釘のインスタンス
