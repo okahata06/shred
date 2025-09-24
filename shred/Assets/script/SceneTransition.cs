@@ -21,7 +21,7 @@ public class SceneTransition : MonoBehaviour
     {
         CoolTime += Time.deltaTime;
         Score.time += Time.deltaTime;
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.R))
         {
                 CoolTime = 0;
             Score.Body = 0;
@@ -31,7 +31,7 @@ public class SceneTransition : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "GoalScene")
         {
-            if (Input.GetKeyDown(KeyCode.Space)&&CoolTime>2)
+            if (Input.GetKeyDown(KeyCode.Return)&&CoolTime>2)
             {
                 Score.Body_Break = 0;
                 Score.Body = 0;
@@ -41,7 +41,7 @@ public class SceneTransition : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "NGScene")
         {
-            if (Input.GetKeyDown(KeyCode.Space)&& CoolTime > 2)
+            if (Input.GetKeyDown(KeyCode.Return) && CoolTime > 2)
             {
                 Score.Body_Break = 0;
                 Score.Body = 0;

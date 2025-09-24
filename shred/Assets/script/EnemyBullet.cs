@@ -37,17 +37,17 @@ public class EnemyBullet : MonoBehaviour
         //ステージ事に弾速/エフェクト調整
         if (StageNumber == 1) 
         { 
-            EF_cooltime = 0.01f; 
+            EF_cooltime = 0.08f; 
         }
         else if (StageNumber == 2)
         {
             Bullet_Speed *= 1.2f;
-            EF_cooltime = 0.01f;
+            EF_cooltime = 0.06f;
         }
         else if (StageNumber == 3)
         {
-            Bullet_Speed *= 5;
-            EF_cooltime = 0.01f;
+            Bullet_Speed *= 2;
+            EF_cooltime = 0.02f;
         }
 
         //プレイヤーの座標取得
