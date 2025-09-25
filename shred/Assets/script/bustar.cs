@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+//ブースト全般のスクリプトです。
 public class bustar : MonoBehaviour
 {
     [SerializeField, Header("ゲージ")]
@@ -14,8 +15,10 @@ public class bustar : MonoBehaviour
     [SerializeField, Header("MaxEnergy")]
     float Energy_Max = 10;
 
+    [SerializeField]
+    AudioSource audiosource;
+
     Rigidbody rig;
-    //GameObject Hip;
     float cooltime = 0;
     float Energy_Remaining;
 
@@ -33,6 +36,8 @@ public class bustar : MonoBehaviour
 
         set = new Vector3(0, bust_power, 0);
         rig = GetComponent<Rigidbody>();
+
+
     }
 
     // Update is called once per frame
@@ -58,6 +63,8 @@ public class bustar : MonoBehaviour
         //残量あり＆スペースを押すとブースト
         if (Input.GetKey(KeyCode.Space) && Energy_Remaining > 0)
         {
+            if(!audiosource.isPlaying&&Gen.GetStage_In)
+                audiosource.Play();
             //ベクトル加算
             rig.velocity += bust;
             //エネルギー減少
@@ -78,6 +85,8 @@ public class bustar : MonoBehaviour
         else
         {//使用してからの時間経過
             cooltime += Time.deltaTime;
+            if(audiosource.isPlaying)
+                audiosource.Stop();
         }
         EnergyGage.value = Energy_Remaining;
     }
