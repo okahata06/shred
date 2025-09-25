@@ -5,13 +5,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //ブースト全般のスクリプトです。
-public class bustar : MonoBehaviour
+public class booster : MonoBehaviour
 {
     [SerializeField, Header("ゲージ")]
     Slider EnergyGage;
 
     [SerializeField, Header("移動力")]　//移動量＝消費エネルギー
-    float bust_power = 0.2f;
+    float boost_power = 50f;
     [SerializeField, Header("MaxEnergy")]
     float Energy_Max = 10;
 
@@ -23,7 +23,7 @@ public class bustar : MonoBehaviour
     float Energy_Remaining;
 
     Vector3 set;
-    Vector3 bust;
+    Vector3 boost;
 
     Generate Gen;
     void Start()
@@ -34,7 +34,7 @@ public class bustar : MonoBehaviour
         //ゲージUIの最大値
         EnergyGage.maxValue = Energy_Max;
 
-        set = new Vector3(0, bust_power, 0);
+        set = new Vector3(0, boost_power, 0);
         rig = GetComponent<Rigidbody>();
 
 
@@ -45,20 +45,20 @@ public class bustar : MonoBehaviour
     {
         //左右への移動ベクトル付与
         if (Input.GetKey(KeyCode.RightArrow))
-        { set.x = -bust_power*2; }
+        { set.x = -boost_power*2; }
         else if (Input.GetKey(KeyCode.LeftArrow))
-        { set.x = bust_power*2; }
+        { set.x = boost_power*2; }
         else
         {
             //ステージ開始前ならｙベクトルは0
             if(!Gen.GetStage_In)
             { set.y = 0; }
             else
-            { set.y=bust_power; }
+            { set.y=boost_power; }
 
             set.x = 0;
         }
-        bust =set * Time.deltaTime;
+        boost =set * Time.deltaTime;
 
         //残量あり＆スペースを押すとブースト
         if (Input.GetKey(KeyCode.Space) && Energy_Remaining > 0)
@@ -66,10 +66,10 @@ public class bustar : MonoBehaviour
             if(!audiosource.isPlaying&&Gen.GetStage_In)
                 audiosource.Play();
             //ベクトル加算
-            rig.velocity += bust;
+            rig.velocity += boost;
             //エネルギー減少
             if (set.y != 0)
-            Energy_Remaining -= bust_power;
+            Energy_Remaining -= boost_power;
 
             //残量がマイナスなら０にする
             if (Energy_Remaining < 0) { Energy_Remaining = 0; }
@@ -80,7 +80,7 @@ public class bustar : MonoBehaviour
         //最大容量未満＆使用から２秒経過ならエネルギー回復
         else if (Energy_Remaining <= Energy_Max && cooltime >= 2)
         {
-            Energy_Remaining += bust_power / 3;//消費の1/3の速度
+            Energy_Remaining += boost_power / 3;//消費の1/3の速度
         }
         else
         {//使用してからの時間経過
