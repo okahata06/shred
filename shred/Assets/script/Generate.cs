@@ -84,7 +84,6 @@ public class Generate : MonoBehaviour
         P_t = Player.GetComponent<Transform>();
         P_posY = (int)P_t.position.y;
 
-        Debug.Log(P_posYbf);
 
             P_posYbf = P_posY;
 

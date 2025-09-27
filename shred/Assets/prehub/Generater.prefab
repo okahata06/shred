@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9168974083771494029}
   m_Layer: 0
   m_Name: Generater
-  m_TagString: Untagged
+  m_TagString: Generater
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,13 +44,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb300034ba4c2e1499362e3876410a83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CAMERA: {fileID: 0}
   Player: {fileID: 0}
   Enemy: {fileID: 2627233413937007367, guid: c7ad6a21c0affc740b382882daafc391, type: 3}
   Nail: {fileID: 6142167205557908203, guid: ff8e9ab8afc01fa44964559bc356765b, type: 3}
+  Block: {fileID: 8631598842285015216, guid: 1f1c809f13a2fae4192756db650b1d4b, type: 3}
+  bigSmall: {fileID: 9013904354594375417, guid: 2eef47f63ab6e5946908031b942e005f, type: 3}
+  Slot: {fileID: 0}
   NG: {fileID: 1988076482909624541, guid: c388a4db4dc23e341bae3ed000a9186d, type: 3}
   Goal: {fileID: 3518551096124332402, guid: 81554f933a1d8e54c8fb2b708609da80, type: 3}
-  Wall_LR: {fileID: 3249920100935237588, guid: c588fb4ff72b5474090b0ce0a43eaa2c, type: 3}
+  Wall_LRDS: {fileID: 3249920100935237588, guid: c588fb4ff72b5474090b0ce0a43eaa2c, type: 3}
   Wall_BA: {fileID: 6581137838955017114, guid: 91d279d23d29ca14b871ee6f5bf7c2c8, type: 3}
-  StageLength: 1000
+  StageLength: 400
   left: -15
   right: 10

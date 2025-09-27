@@ -85,7 +85,6 @@ public class SceneTransition : MonoBehaviour
             Goal_EntryCount = 0;
 
         }
-        Debug.Log(NG_EntryCount);
     }
    
     void ChangeScene()
